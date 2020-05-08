@@ -32,6 +32,8 @@ namespace MvcApp
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FirstName, LastName, DepartmentId")] Employee employee)
         {
+
+          
             if (ModelState.IsValid)
             {
                 employee.Department = _context.Departments.Find(employee.DepartmentId);

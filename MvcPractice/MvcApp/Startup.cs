@@ -27,7 +27,7 @@ namespace MvcApp
         {
             services.AddControllersWithViews();
             services.AddDbContext<MvcAppContext>(options => options
-                .UseSqlServer(Configuration.GetConnectionString("MvcAppContext"), x => x.MigrationsAssembly("MvcApp")));
+                .UseSqlServer(Configuration.GetConnectionString("MvcAppContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
