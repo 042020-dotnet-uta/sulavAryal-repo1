@@ -16,6 +16,8 @@ namespace MvcApp.Domain
         public string LastName { get; set; }
 
         [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "You must choose a Department")]
+        [Display(Name = "Department")]
         public int DepartmentId { get; set; }
         public Department Department { get; set; }
 
