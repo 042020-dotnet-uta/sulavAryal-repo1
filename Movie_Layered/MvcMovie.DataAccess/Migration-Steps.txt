@@ -1,0 +1,46 @@
+﻿
+What did I have to do? 
+1. get the Tools package inside DataAccess layer which has your dbContext file : Microsoft.EntityFrameworkCore.Tools
+2. get the Design package inside UI layer : Microsoft.VisualStudio.Web.CodeGeneration.Design
+3. Changed Default Project: to MvcMovie.DataAccess from dropdown in package manager console (was initially set to MvcMovie.UI)
+4. Add-Migration InitialMigration o- "MvcMovieMigration"
+5. Update-Database
+
+Extra stuff
+*************************
+
+
+If you have more than one context
+- Add-Migration -o -Context MvcMovieDbContext o- "MvcMovieMigration" InitialMigration
+- Update-Database to make it update db. 
+
+From cmd or powershell 
+- dotnet ef migrations add InitialMigration -o "MvcMovieMigration"
+- dotnet ef database update
+
+- Script-Migration
+- dotnet ef migrations script > "C:\scripts\migration\script.sql"
+
+Sets Startup project and Migration project explicitly 
+-- add-migration Initial -Context "MvcMovieDbContext" -StartupProject "MvcMovie.UI" -Project "MvcMovie.DataAccess"
+
+-o for output folder you can name it anything 
+-- add-migration Initial -Context "MvcMovieDbContext" -StartupProject "MvcMovie.UI" -Project "MvcMovie.DataAccess" -o "MvcMovieMigrations"
+
+-- Add-Migration InitialMigration -o "MvcMovieMigration"
+   Update-Database
+
+
+/* Error I encountered. 
+
+Your target project 'MvcMovie.UI' doesn't match your migrations assembly 'MvcMovie.DataAccess'.
+Either change your target project or change your migrations assembly.
+Change your migrations assembly by using DbContextOptionsBuilder.
+E.g. options.UseSqlServer(connection, b => b.MigrationsAssembly("MvcMovie.UI")).
+By default, the migrations assembly is the assembly containing the DbContext.
+Change your target project to the migrations project by using the Package Manager Console's Default project drop-down list,
+or by executing "dotnet ef" from the directory containing the migrations project.
+
+*/
+
+Ps: if you get a keyword not supported error popup at the Update-Database part, it means that there might be some error in you connection string.
