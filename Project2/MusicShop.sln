@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.UI", "OnlineShop.UI\OnlineShop.UI.csproj", "{3D645216-6018-4DED-8B25-AA59E9C34498}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicShop.UI", "OnlineShop.UI\MusicShop.UI.csproj", "{3D645216-6018-4DED-8B25-AA59E9C34498}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Tests", "OnlineShop.Tests\OnlineShop.Tests.csproj", "{368D01E4-2E24-460C-9B88-8B29449A8EF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicShop.Tests", "OnlineShop.Tests\MusicShop.Tests.csproj", "{368D01E4-2E24-460C-9B88-8B29449A8EF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Repository", "OnlineShop.Repository\OnlineShop.Repository.csproj", "{276E389A-C253-4A26-9DD6-DD1459C46420}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicShop.Repository", "OnlineShop.Repository\MusicShop.Repository.csproj", "{276E389A-C253-4A26-9DD6-DD1459C46420}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Domain", "OnlineShop.Domain\OnlineShop.Domain.csproj", "{740104C9-84B8-4737-BCAB-EE2A74DA666B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicShop.Domain", "OnlineShop.Domain\MusicShop.Domain.csproj", "{740104C9-84B8-4737-BCAB-EE2A74DA666B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

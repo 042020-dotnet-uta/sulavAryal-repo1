@@ -17,9 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OnlineShop.Domain\OnlineShop.Domain.csproj" />
-    <ProjectReference Include="..\OnlineShop.Repository\OnlineShop.Repository.csproj" />
-    <ProjectReference Include="..\OnlineShop.UI\OnlineShop.UI.csproj" />
+    <ProjectReference Include="..\OnlineShop.Domain\MusicShop.Domain.csproj" />
+    <ProjectReference Include="..\OnlineShop.Repository\MusicShop.Repository.csproj" />
+    <ProjectReference Include="..\OnlineShop.UI\MusicShop.UI.csproj" />
   </ItemGroup>
 
 </Project>

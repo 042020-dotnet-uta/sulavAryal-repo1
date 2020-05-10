@@ -1,4 +1,4 @@
-﻿namespace OnlineShop.Domain
+﻿namespace MusicShop.Domain
 {
     public class Customer
     {

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using OnlineShop.UI.Models;
+using MusicShop.UI.Models;
 using System.Diagnostics;
 
-namespace OnlineShop.UI.Controllers
+namespace MusicShop.UI.Controllers
 {
     public class HomeController : Controller
     {

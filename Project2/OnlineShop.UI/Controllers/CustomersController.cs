@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using OnlineShop.Domain;
-using OnlineShop.Repository.DataAccess;
+using MusicShop.Domain;
+using MusicShop.Repository.DataAccess;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OnlineShop.UI.Controllers
+namespace MusicShop.UI.Controllers
 {
     public class CustomersController : Controller
     {
-        private readonly ShopDbContext _context;
+        private readonly MusicShopDbContext _context;
 
-        public CustomersController(ShopDbContext context)
+        public CustomersController(MusicShopDbContext context)
         {
             _context = context;
         }

@@ -348,3 +348,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/Project2/OnlineShop.Repository/DataAccess/MSMigrations/20200510070542_Initial.cs
+/Project2/OnlineShop.Repository/DataAccess/MSMigrations/20200510070542_Initial.Designer.cs

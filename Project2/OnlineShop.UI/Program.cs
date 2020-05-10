@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace OnlineShop.UI
+namespace MusicShop.UI
 {
     public class Program
     {

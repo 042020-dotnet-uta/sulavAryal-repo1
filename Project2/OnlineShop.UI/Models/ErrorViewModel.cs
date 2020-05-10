@@ -1,6 +1,4 @@
-using System;
-
-namespace OnlineShop.UI.Models
+namespace MusicShop.UI.Models
 {
     public class ErrorViewModel
     {

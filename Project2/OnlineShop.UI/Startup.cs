@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using OnlineShop.Repository.DataAccess;
+using MusicShop.Repository.DataAccess;
 
-namespace OnlineShop.UI
+namespace MusicShop.UI
 {
     public class Startup
     {
@@ -21,7 +21,7 @@ namespace OnlineShop.UI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<ShopDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ShopDbContext")));
+            services.AddDbContext<MusicShopDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MusicShopDbContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Repository
+namespace MusicShop.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
