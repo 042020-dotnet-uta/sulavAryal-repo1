@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OnlineShop.Domain
+﻿namespace OnlineShop.Domain
 {
     public class Customer
     {
