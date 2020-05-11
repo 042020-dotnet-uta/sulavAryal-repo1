@@ -1,0 +1,44 @@
+1. What is the best way to confirm your HTML code is well formed and valid? 
+
+a. By inspecting DOM and tinkering with it through browser.
+b. By using world wide webs free online validators. 
+c. By trial and experiments
+d. By using validator provided by w3c org https://validator.w3.org/ (ans)
+
+
+
+2. Which value should the box-sizing be set to, to get css to include border and padding with the width when calculating.
+
+a. content-box
+b. border-box (ans)
+c. margin-box
+d. padding-box
+
+
+
+3 What units do we use with css display: grid ? 
+
+a. px
+b. %
+b. em
+c. fr (ans)
+d. rem
+
+
+
+4. Which file in asp.net core houses the rules pertaining the scopes of tag helpers ? 
+
+a. _ViewImports.cshtml (ans)
+b. _ViewStart.cshtml
+c. _ViewComponent.cshtml
+d. _ViewRender.cshtml
+
+
+
+5. How do we manage client side libraries in asp.net core? 
+
+a. appsettings.json
+b. secrets.json
+c. wwwroot
+d. libman.json (ans)
+
