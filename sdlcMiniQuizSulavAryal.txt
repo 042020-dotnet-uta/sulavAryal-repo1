@@ -1,4 +1,4 @@
-1. Which of the following are not type of SDLC models?
+1. Which of the following are not the types of SDLC models?
 
 a) Water fall model
 b) Big Bang model
@@ -8,7 +8,8 @@ e) V-model
 
 
 2. Which of these statements are true for big bang model. 
-a. As the name suggests is used where big teams with big project are involved.
+
+a. As the name suggests big bang model is used where big teams with big project are involved.
 b. Big teams means lots of eyes hence low risk of project failure
 c. Project management is difficult and requiers lots of resources 
 d. None of the above (ans)
@@ -27,6 +28,7 @@ c. Waterfall model (ans)
 d. Iterative model
 
 5. What are the not the advantages of Agile model. 
+
 a) Takes lot of Time to complete.
 b) Requires more planning and creates more documentation
 c) Skips Regular feedback from end users
