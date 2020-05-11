@@ -1,0 +1,34 @@
+1. Which of the following are not type of SDLC models?
+
+a) Water fall model
+b) Big Bang model
+c) Agile model
+d) Downward Spiral model (ans)
+e) V-model
+
+
+2. Which of these statements are true for big bang model. 
+a. As the name suggests is used where big teams with big project are involved.
+b. Big teams means lots of eyes hence low risk of project failure
+c. Project management is difficult and requiers lots of resources 
+d. None of the above (ans)
+
+3. Which of these statements are false for Agile model ?
+a. Quick delivery of a working product
+b. Static development environment which doesn't need constant adjustment (ans)
+c. Sustainable development process.
+d. Early and continuous delivery. 
+
+
+4. V- Model can be considered as extentions of 
+a. Agile model
+b. Spiral model
+c. Waterfall model (ans)
+d. Iterative model
+
+5. What are the not the advantages of Agile model. 
+a) Takes lot of Time to complete.
+b) Requires more planning and creates more documentation
+c) Skips Regular feedback from end users
+d) Solves issue in weekly meet ups. 
+e) All the above (ans)
