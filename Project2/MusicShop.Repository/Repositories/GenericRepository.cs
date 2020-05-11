@@ -2,14 +2,23 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using MusicShop.Repository.DataAccess;
 
 namespace MusicShop.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        public async Task<T> Add(T entity)
+        private readonly MSDbContext _context;
+
+        public GenericRepository(MSDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        
+        public void Add(T entity)
+        {
+            _context.Set<T>().Add(entity);
+            var result = SaveChanges();
         }
 
         public async Task<IEnumerable<T>> All()
@@ -38,14 +47,14 @@ namespace MusicShop.Repository
         }
 
 
-        public async Task<T> Update(T entity)
+        public async Task Update(T entity)
         {
             throw new NotImplementedException();
         }
 
-        public void SaveChanges()
+        public async Task<int> SaveChanges()
         {
-            throw new NotImplementedException();
+             return await _context.SaveChangesAsync();
         }
     }
 }

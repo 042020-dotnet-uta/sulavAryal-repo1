@@ -3,9 +3,9 @@ using MusicShop.Domain;
 
 namespace MusicShop.Repository.DataAccess
 {
-    public class MusicShopDbContext : DbContext
+    public class MSDbContext : DbContext
     {
-        public MusicShopDbContext(DbContextOptions<MusicShopDbContext> options) : base(options)
+        public MSDbContext(DbContextOptions<MSDbContext> options) : base(options)
         {
 
         }

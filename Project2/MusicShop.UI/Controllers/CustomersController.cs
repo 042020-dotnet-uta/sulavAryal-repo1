@@ -9,9 +9,9 @@ namespace MusicShop.UI.Controllers
 {
     public class CustomersController : Controller
     {
-        private readonly MusicShopDbContext _context;
+        private readonly MSDbContext _context;
 
-        public CustomersController(MusicShopDbContext context)
+        public CustomersController(MSDbContext context)
         {
             _context = context;
         }

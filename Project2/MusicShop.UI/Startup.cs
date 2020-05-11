@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MusicShop.Repository;
 using MusicShop.Repository.DataAccess;
 
 namespace MusicShop.UI
@@ -21,7 +22,8 @@ namespace MusicShop.UI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<MusicShopDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MusicShopDbContext")));
+            services.AddDbContext<MSDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MusicShopDbContext")));
+            //services.AddTransient<IGenericRepository<GenericRepository,GenericRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

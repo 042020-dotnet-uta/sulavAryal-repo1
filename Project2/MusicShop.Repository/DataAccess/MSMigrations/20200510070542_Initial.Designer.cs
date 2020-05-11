@@ -8,7 +8,7 @@ using MusicShop.Repository.DataAccess;
 
 namespace MusicShop.Repository.DataAccess.MSMigrations
 {
-    [DbContext(typeof(MusicShopDbContext))]
+    [DbContext(typeof(MSDbContext))]
     [Migration("20200510070542_Initial")]
     partial class Initial
     {
