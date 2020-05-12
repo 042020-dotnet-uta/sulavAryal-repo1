@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace MusicShop.Domain
@@ -29,9 +30,12 @@ namespace MusicShop.Domain
         /// Gets or Sets Product code
         /// </summary>
         public string  ProductCode { get; set; }
+
+
         /// <summary>
         /// Gets or Sets Product price
         /// </summary>
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
         /// <summary>
         /// Gets or Sets Navigational property of Inventory

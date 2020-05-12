@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace MusicShop.Domain
@@ -17,6 +18,7 @@ namespace MusicShop.Domain
         /// <summary>
         /// Gets or sets Price at the time of OrderLineItem creation
         /// </summary>
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
         /// <summary>
         /// Gets or sets OrderId of OrderLineItem, is a foreign key.
