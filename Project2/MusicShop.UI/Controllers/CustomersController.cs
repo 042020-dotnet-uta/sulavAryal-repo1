@@ -139,7 +139,6 @@ namespace MusicShop.UI.Controllers
             await _customerRepository.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
-
      
     }
 }
