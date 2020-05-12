@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -17,9 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OnlineShop.Domain\MusicShop.Domain.csproj" />
-    <ProjectReference Include="..\OnlineShop.Repository\MusicShop.Repository.csproj" />
-    <ProjectReference Include="..\OnlineShop.UI\MusicShop.UI.csproj" />
+    <ProjectReference Include="..\MusicShop.Domain\MusicShop.Domain.csproj" />
+    <ProjectReference Include="..\MusicShop.Repository\MusicShop.Repository.csproj" />
+    <ProjectReference Include="..\MusicShop.UI\MusicShop.UI.csproj" />
   </ItemGroup>
 
 </Project>
