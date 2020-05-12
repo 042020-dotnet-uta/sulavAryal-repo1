@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MusicShop.Domain;
+using MusicShop.Repository;
 using MusicShop.Repository.DataAccess;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,18 +10,40 @@ namespace MusicShop.UI.Controllers
 {
     public class CustomersController : Controller
     {
-        private readonly MSDbContext _context;
+        private readonly ICustomerRepository _customerRepository;
 
-        public CustomersController(MSDbContext context)
+        public CustomersController(ICustomerRepository customerRepository)
         {
-            _context = context;
+            _customerRepository = customerRepository;
         }
 
-        // GET: Customers
+
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Customers.ToListAsync());
+            var customers = await _customerRepository.GetAllAsync();
+            return View(customers);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("FirstName,LastName,Email")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                await _customerRepository.AddAsync(customer);
+
+                return RedirectToAction(nameof(Index));
+            }
+            return View(customer);
+        }
+
 
         // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -30,35 +53,14 @@ namespace MusicShop.UI.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.Id == id);
+            //var customer = await _Customers
+            //    .FirstOrDefaultAsync(m => m.Id == id);
+            var customer = await _customerRepository.FindSingleAsync(i => i.Id == id);
             if (customer == null)
             {
                 return NotFound();
             }
 
-            return View(customer);
-        }
-
-        // GET: Customers/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Customers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Email")] Customer customer)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(customer);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
             return View(customer);
         }
 
@@ -70,7 +72,7 @@ namespace MusicShop.UI.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers.FindAsync(id);
+            var customer = await _customerRepository.FindSingleAsync(i => i.Id == id);
             if (customer == null)
             {
                 return NotFound();
@@ -94,19 +96,18 @@ namespace MusicShop.UI.Controllers
             {
                 try
                 {
-                    _context.Update(customer);
-                    await _context.SaveChangesAsync();
+                    await _customerRepository.UpdateAsync(customer);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CustomerExists(customer.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    //if (!CustomerExists(customer.Id))
+                    //{
+                    //    return NotFound();
+                    //}
+                    //else
+                    //{
+                    //    throw;
+                    //}
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -121,8 +122,7 @@ namespace MusicShop.UI.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var customer = await _customerRepository.FindSingleAsync(i => i.Id == id);
             if (customer == null)
             {
                 return NotFound();
@@ -136,15 +136,10 @@ namespace MusicShop.UI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var customer = await _context.Customers.FindAsync(id);
-            _context.Customers.Remove(customer);
-            await _context.SaveChangesAsync();
+            await _customerRepository.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CustomerExists(int id)
-        {
-            return _context.Customers.Any(e => e.Id == id);
-        }
+     
     }
 }

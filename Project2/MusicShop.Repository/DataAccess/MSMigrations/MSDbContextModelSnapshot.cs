@@ -8,7 +8,7 @@ using MusicShop.Repository.DataAccess;
 namespace MusicShop.Repository.DataAccess.MSMigrations
 {
     [DbContext(typeof(MSDbContext))]
-    partial class MusicShopDbContextModelSnapshot : ModelSnapshot
+    partial class MSDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

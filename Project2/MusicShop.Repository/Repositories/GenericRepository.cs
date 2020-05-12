@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using MusicShop.Domain;
 using MusicShop.Repository.DataAccess;
 
 namespace MusicShop.Repository
@@ -15,44 +18,55 @@ namespace MusicShop.Repository
             _context = context;
         }
         
-        public void Add(T entity)
+        public async Task AddAsync(T entity)
         {
             _context.Set<T>().Add(entity);
-            var result = SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> All()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>()
+               .ToListAsync();
         }
 
-        public async Task Delete(int? id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+           var result=  await _context.FindAsync<T>(id);
+            _context.Set<T>().Remove(result);
+           await _context.SaveChangesAsync();
+
+          //  await _context.FindAsync<T>(id);
+           // _context.Remove(ent);
+           // await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate)
+        public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>()
+               .AsQueryable()
+               .Where(predicate)
+               .ToListAsync();
         }
 
-        public async Task<IEnumerable<T>> FindBy(Expression<Func<T, bool>> predicate)
+        public async Task<IEnumerable<T>> FindByAsync(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().Where(predicate).ToListAsync();
         }
 
-        public async Task<T> FindSingle(Expression<Func<T, bool>> predicate)
+        public async Task<T> FindSingleAsync(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().FirstOrDefaultAsync(predicate);
         }
 
 
-        public async Task Update(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Update(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<int> SaveChanges()
+        public async Task<int> SaveChangesAsync()
         {
              return await _context.SaveChangesAsync();
         }

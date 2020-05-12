@@ -7,13 +7,13 @@ namespace MusicShop.Repository
 {
     public interface IGenericRepository<T> where T : class
     {
-        void Add(T entity);
-        Task Update(T entity);
-        Task<IEnumerable<T>> All();
-        Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate);
-        Task<IEnumerable<T>> FindBy(Expression<Func<T, bool>> predicate);
-        Task<T> FindSingle(Expression<Func<T, bool>> predicate);
-        Task Delete(int? id);
-        Task<int> SaveChanges();
+        Task AddAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> FindByAsync(Expression<Func<T, bool>> predicate);
+        Task<T> FindSingleAsync(Expression<Func<T, bool>> predicate);
+        Task DeleteAsync(int id);
+        Task<int> SaveChangesAsync();
     }
 }

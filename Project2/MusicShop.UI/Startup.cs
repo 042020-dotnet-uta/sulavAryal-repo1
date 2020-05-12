@@ -23,7 +23,7 @@ namespace MusicShop.UI
         {
             services.AddControllersWithViews();
             services.AddDbContext<MSDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MusicShopDbContext")));
-            //services.AddTransient<IGenericRepository<GenericRepository,GenericRepository>();
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
