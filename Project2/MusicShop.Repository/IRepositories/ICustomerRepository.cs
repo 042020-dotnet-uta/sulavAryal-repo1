@@ -1,12 +1,11 @@
 ﻿using MusicShop.Domain;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace MusicShop.Repository
 {
     public interface ICustomerRepository : IGenericRepository<Customer>
     {
-
+        //Task<IEnumerable<Customer>> Bear();
     }
 }

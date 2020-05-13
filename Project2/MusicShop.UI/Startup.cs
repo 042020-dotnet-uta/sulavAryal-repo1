@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,13 @@ namespace MusicShop.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.LoginPath = "/Account/Login";
+                options.Cookie.Name = "MusicShopCookie";
+            });
+
             services.AddControllersWithViews();
             services.AddDbContext<MSDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MusicShopDbContext")));
             services.AddTransient<ICustomerRepository, CustomerRepository>();
@@ -44,13 +52,15 @@ namespace MusicShop.UI
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+            app.UseCookiePolicy();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=Login}/{id?}");
             });
         }
     }

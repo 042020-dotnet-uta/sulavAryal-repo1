@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MusicShop.Domain;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace MusicShop.UI.Controllers
 {
+    [Authorize]
     public class CustomersController : Controller
     {
         private readonly ICustomerRepository _customerRepository;
@@ -47,16 +49,26 @@ namespace MusicShop.UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FirstName,LastName,Email")] Customer customer)
+        public async Task<IActionResult> Create([Bind("FirstName,LastName,Email,PhoneNo")] Customer customer, [Bind("Street,City,State,Zip")] CustomerAddress customerAddress
+        )
         {
            
             if (ModelState.IsValid)
             {
+                var cusAdd = new CustomerAddress 
+                {
+                    Street = customerAddress.Street,
+                    City = customerAddress.City,
+                    State= customerAddress.State,
+                    Zip = customerAddress.Zip
+                };
                 var cust = new Customer
                 {
                     FirstName = customer.FirstName,
                     LastName = customer.LastName,
                     Email = customer.Email,
+                    PhoneNo = customer.PhoneNo,
+                    CustomerAddress = cusAdd,
                     UserTypeId = 2
                 };
                 await _customerRepository.AddAsync(cust);
@@ -95,6 +107,7 @@ namespace MusicShop.UI.Controllers
             }
 
             var customer = await _customerRepository.FindSingleAsync(i => i.Id == id);
+            //var cust = customer.Include(i=>i.CustomerAddress).
             if (customer == null)
             {
                 return NotFound();
