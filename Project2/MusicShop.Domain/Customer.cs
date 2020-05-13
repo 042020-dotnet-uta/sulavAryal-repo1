@@ -43,10 +43,6 @@ namespace MusicShop.Domain
         /// </summary>
        
         public int UserTypeId { get; set; }
-        /// <summary>
-        /// Gets or sets Navigational property of UserType
-        /// </summary>
-        public UserType UserType { get; set; }
 
         /// <summary>
         /// Overrides the ToString method to display information about the Customer

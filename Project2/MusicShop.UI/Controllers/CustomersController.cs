@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MusicShop.Domain;
 using MusicShop.Repository;
 using MusicShop.Repository.DataAccess;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,15 +14,27 @@ namespace MusicShop.UI.Controllers
     {
         private readonly ICustomerRepository _customerRepository;
 
+        public string SessionKeyName { get; private set; }
+
         public CustomersController(ICustomerRepository customerRepository)
         {
             _customerRepository = customerRepository;
+         
         }
 
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchString)
         {
+            ViewData["Searching"] = ""; // Assume not searching at the begining. 
             var customers = await _customerRepository.GetAllAsync();
+
+            // Search Customers
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                customers = customers.Where(p => p.LastName.ToUpper().Contains(SearchString.ToUpper())
+                                       || p.FirstName.ToUpper().Contains(SearchString.ToUpper()));
+                ViewData["Searching"] = " show";
+            }
             return View(customers);
         }
 
@@ -35,9 +49,17 @@ namespace MusicShop.UI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FirstName,LastName,Email")] Customer customer)
         {
+           
             if (ModelState.IsValid)
             {
-                await _customerRepository.AddAsync(customer);
+                var cust = new Customer
+                {
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName,
+                    Email = customer.Email,
+                    UserTypeId = 2
+                };
+                await _customerRepository.AddAsync(cust);
 
                 return RedirectToAction(nameof(Index));
             }

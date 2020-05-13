@@ -51,8 +51,6 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserTypeId");
-
                     b.ToTable("Customers");
                 });
 
@@ -208,30 +206,6 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                     b.HasKey("Id");
 
                     b.ToTable("Stores");
-                });
-
-            modelBuilder.Entity("MusicShop.Domain.UserType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserTypes");
-                });
-
-            modelBuilder.Entity("MusicShop.Domain.Customer", b =>
-                {
-                    b.HasOne("MusicShop.Domain.UserType", "UserType")
-                        .WithMany()
-                        .HasForeignKey("UserTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("MusicShop.Domain.CustomerAddress", b =>
