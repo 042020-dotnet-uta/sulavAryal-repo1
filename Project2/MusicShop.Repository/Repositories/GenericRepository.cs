@@ -62,8 +62,16 @@ namespace MusicShop.Repository
 
         public async Task UpdateAsync(T entity)
         {
-            _context.Set<T>().Update(entity);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Entry(entity).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException dbex)
+            {
+      
+            }
+            
         }
 
         public async Task<int> SaveChangesAsync()

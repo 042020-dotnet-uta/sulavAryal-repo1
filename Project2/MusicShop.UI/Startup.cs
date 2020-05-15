@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MusicShop.Repository;
 using MusicShop.Repository.DataAccess;
+using System;
 
 namespace MusicShop.UI
 {
@@ -27,11 +28,13 @@ namespace MusicShop.UI
             {
                 options.LoginPath = "/Account/Login";
                 options.Cookie.Name = "MusicShopCookie";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
             });
 
             services.AddControllersWithViews();
             services.AddDbContext<MSDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MusicShopDbContext")));
             services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,7 +63,7 @@ namespace MusicShop.UI
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=Login}/{id?}");
+                    pattern: "{controller=Account}/{action=Index}/{id?}");
             });
         }
     }

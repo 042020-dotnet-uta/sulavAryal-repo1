@@ -24,7 +24,7 @@ namespace MusicShop.UI.Controllers
          
         }
 
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string SearchString)
         {
             ViewData["Searching"] = ""; // Assume not searching at the begining. 
@@ -40,6 +40,7 @@ namespace MusicShop.UI.Controllers
             return View(customers);
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
@@ -47,6 +48,7 @@ namespace MusicShop.UI.Controllers
         }
 
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FirstName,LastName,Email,PhoneNo")] Customer customer, [Bind("Street,City,State,Zip")] CustomerAddress customerAddress
@@ -99,6 +101,7 @@ namespace MusicShop.UI.Controllers
         }
 
         // GET: Customers/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -106,7 +109,7 @@ namespace MusicShop.UI.Controllers
                 return NotFound();
             }
 
-            var customer = await _customerRepository.FindSingleAsync(i => i.Id == id);
+            var customer = await _customerRepository.FindCustomerById(id);
             //var cust = customer.Include(i=>i.CustomerAddress).
             if (customer == null)
             {
@@ -118,9 +121,11 @@ namespace MusicShop.UI.Controllers
         // POST: Customers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email")] Customer customer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email,PhoneNo")] Customer customer,
+            [Bind("Street,City,State,Zip")] CustomerAddress customerAddress)
         {
             if (id != customer.Id)
             {
@@ -131,9 +136,10 @@ namespace MusicShop.UI.Controllers
             {
                 try
                 {
+                    customer.CustomerAddress = customerAddress;
                     await _customerRepository.UpdateAsync(customer);
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception)
                 {
                     //if (!CustomerExists(customer.Id))
                     //{
@@ -149,7 +155,9 @@ namespace MusicShop.UI.Controllers
             return View(customer);
         }
 
+
         // GET: Customers/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -167,6 +175,7 @@ namespace MusicShop.UI.Controllers
         }
 
         // POST: Customers/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

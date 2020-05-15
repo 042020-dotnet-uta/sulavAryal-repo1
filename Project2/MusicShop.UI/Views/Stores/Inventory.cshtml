@@ -1,52 +1,51 @@
 ﻿@model IEnumerable<MusicShop.Domain.InventoryItem>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Inventory";
 }
 
-<h1>Index</h1>
+<h1> @ViewBag.Store Store Inventory</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+   
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Product.Name)
+                @Html.DisplayNameFor(model => model.Product)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Store.Name)
+                @Html.DisplayNameFor(model => model.Product.Price)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product.Price)
+                @Html.DisplayNameFor(model => model.ChangedDate)
             </th>
-
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+
+
             <td>
                 @Html.DisplayFor(modelItem => item.Product.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Store.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Product.Price)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChangedDate)
+            </td>
+            <td>
+                <a href="/Stores/AddInventory?Id=@item.Product.Id&storeId=@ViewBag.StoreId">Add Inventory</a>
             </td>
         </tr>
 }

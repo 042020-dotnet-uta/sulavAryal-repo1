@@ -10,8 +10,8 @@ using MusicShop.Repository.DataAccess;
 namespace MusicShop.Repository.DataAccess.MSMigrations
 {
     [DbContext(typeof(MSDbContext))]
-    [Migration("20200513060203_initial")]
-    partial class initial
+    [Migration("20200514063956_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -488,7 +488,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 1,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 163, DateTimeKind.Unspecified).AddTicks(1547), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 315, DateTimeKind.Unspecified).AddTicks(3682), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 1,
                             Quantity = 20,
@@ -497,7 +497,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 2,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8675), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(418), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 2,
                             Quantity = 20,
@@ -506,7 +506,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 3,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8713), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(459), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 3,
                             Quantity = 20,
@@ -515,7 +515,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 4,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8722), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(467), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 4,
                             Quantity = 20,
@@ -524,7 +524,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 5,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8729), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(473), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 5,
                             Quantity = 20,
@@ -533,7 +533,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 6,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8735), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(479), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 6,
                             Quantity = 20,
@@ -542,7 +542,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 7,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8740), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(486), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 7,
                             Quantity = 20,
@@ -551,7 +551,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 8,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8746), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(491), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 8,
                             Quantity = 20,
@@ -560,7 +560,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 9,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8752), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(497), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 9,
                             Quantity = 20,
@@ -569,7 +569,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 10,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8758), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(503), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 10,
                             Quantity = 20,
@@ -578,7 +578,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 11,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8764), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(509), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 1,
                             Quantity = 20,
@@ -587,7 +587,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 12,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8769), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(515), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 2,
                             Quantity = 20,
@@ -596,7 +596,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 13,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8775), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(520), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 3,
                             Quantity = 20,
@@ -605,7 +605,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 14,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8781), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(526), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 4,
                             Quantity = 20,
@@ -614,7 +614,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 15,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8786), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(532), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 5,
                             Quantity = 20,
@@ -623,7 +623,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 16,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8792), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(538), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 6,
                             Quantity = 20,
@@ -632,7 +632,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 17,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8798), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(543), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 7,
                             Quantity = 20,
@@ -641,7 +641,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 18,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8804), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(549), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 8,
                             Quantity = 20,
@@ -650,7 +650,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 19,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8809), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(555), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 9,
                             Quantity = 20,
@@ -659,7 +659,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 20,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8815), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(560), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 10,
                             Quantity = 20,
@@ -668,7 +668,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 21,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8821), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(566), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 1,
                             Quantity = 20,
@@ -677,7 +677,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 22,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8826), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(572), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 2,
                             Quantity = 20,
@@ -686,7 +686,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 23,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8832), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(578), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 3,
                             Quantity = 20,
@@ -695,7 +695,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 24,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8838), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(583), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 4,
                             Quantity = 20,
@@ -704,7 +704,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 25,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8844), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(589), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 5,
                             Quantity = 20,
@@ -713,7 +713,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 26,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8849), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(595), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 6,
                             Quantity = 20,
@@ -722,7 +722,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 27,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8855), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(600), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 7,
                             Quantity = 20,
@@ -731,7 +731,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 28,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8861), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(606), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 8,
                             Quantity = 20,
@@ -740,7 +740,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 29,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8867), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(612), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 9,
                             Quantity = 20,
@@ -749,7 +749,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 30,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8872), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(618), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 10,
                             Quantity = 20,
@@ -758,7 +758,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 31,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8878), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(624), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 1,
                             Quantity = 20,
@@ -767,7 +767,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 32,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8884), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(630), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 2,
                             Quantity = 20,
@@ -776,7 +776,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 33,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8890), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(635), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 3,
                             Quantity = 20,
@@ -785,7 +785,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 34,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8896), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(641), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 4,
                             Quantity = 20,
@@ -794,7 +794,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 35,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8901), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(647), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 5,
                             Quantity = 20,
@@ -803,7 +803,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 36,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8907), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(652), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 6,
                             Quantity = 20,
@@ -812,7 +812,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 37,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8913), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(658), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 7,
                             Quantity = 20,
@@ -821,7 +821,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 38,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8919), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(664), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 8,
                             Quantity = 20,
@@ -830,7 +830,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 39,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8925), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(669), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 9,
                             Quantity = 20,
@@ -839,7 +839,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 40,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8930), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(675), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 10,
                             Quantity = 20,
@@ -848,7 +848,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 41,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(8936), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(681), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 1,
                             Quantity = 20,
@@ -857,7 +857,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 42,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(9014), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(686), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 2,
                             Quantity = 20,
@@ -866,7 +866,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 43,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(9020), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(692), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 3,
                             Quantity = 20,
@@ -875,7 +875,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 44,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(9026), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(698), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 4,
                             Quantity = 20,
@@ -884,7 +884,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 45,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(9032), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(703), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 5,
                             Quantity = 20,
@@ -893,7 +893,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 46,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(9038), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(709), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 6,
                             Quantity = 20,
@@ -902,7 +902,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 47,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(9043), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(715), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 7,
                             Quantity = 20,
@@ -911,7 +911,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 48,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(9049), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(757), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 8,
                             Quantity = 20,
@@ -920,7 +920,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 49,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(9055), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(764), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 9,
                             Quantity = 20,
@@ -929,7 +929,7 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         new
                         {
                             Id = 50,
-                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 164, DateTimeKind.Unspecified).AddTicks(9060), new TimeSpan(0, -7, 0, 0, 0)),
+                            ChangedDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(769), new TimeSpan(0, -7, 0, 0, 0)),
                             LoggedUserId = 1,
                             ProductId = 10,
                             Quantity = 20,
@@ -966,42 +966,42 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         {
                             Id = 1,
                             CustomerId = 1,
-                            OrderDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 165, DateTimeKind.Unspecified).AddTicks(1184), new TimeSpan(0, -7, 0, 0, 0)),
+                            OrderDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(3085), new TimeSpan(0, -7, 0, 0, 0)),
                             StoreId = 1
                         },
                         new
                         {
                             Id = 2,
                             CustomerId = 1,
-                            OrderDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 165, DateTimeKind.Unspecified).AddTicks(1489), new TimeSpan(0, -7, 0, 0, 0)),
+                            OrderDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(3380), new TimeSpan(0, -7, 0, 0, 0)),
                             StoreId = 1
                         },
                         new
                         {
                             Id = 3,
                             CustomerId = 2,
-                            OrderDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 165, DateTimeKind.Unspecified).AddTicks(1509), new TimeSpan(0, -7, 0, 0, 0)),
+                            OrderDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(3395), new TimeSpan(0, -7, 0, 0, 0)),
                             StoreId = 2
                         },
                         new
                         {
                             Id = 4,
                             CustomerId = 3,
-                            OrderDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 165, DateTimeKind.Unspecified).AddTicks(1515), new TimeSpan(0, -7, 0, 0, 0)),
+                            OrderDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(3401), new TimeSpan(0, -7, 0, 0, 0)),
                             StoreId = 2
                         },
                         new
                         {
                             Id = 5,
                             CustomerId = 4,
-                            OrderDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 165, DateTimeKind.Unspecified).AddTicks(1521), new TimeSpan(0, -7, 0, 0, 0)),
+                            OrderDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(3407), new TimeSpan(0, -7, 0, 0, 0)),
                             StoreId = 4
                         },
                         new
                         {
                             Id = 6,
                             CustomerId = 5,
-                            OrderDate = new DateTimeOffset(new DateTime(2020, 5, 12, 23, 2, 3, 165, DateTimeKind.Unspecified).AddTicks(1527), new TimeSpan(0, -7, 0, 0, 0)),
+                            OrderDate = new DateTimeOffset(new DateTime(2020, 5, 13, 23, 39, 56, 317, DateTimeKind.Unspecified).AddTicks(3413), new TimeSpan(0, -7, 0, 0, 0)),
                             StoreId = 5
                         });
                 });
@@ -1099,7 +1099,12 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                     b.Property<string>("ProductCode")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("StoreId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("StoreId");
 
                     b.ToTable("Products");
 
@@ -1265,6 +1270,13 @@ namespace MusicShop.Repository.DataAccess.MSMigrations
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MusicShop.Domain.Product", b =>
+                {
+                    b.HasOne("MusicShop.Domain.Store", null)
+                        .WithMany("Products")
+                        .HasForeignKey("StoreId");
                 });
 #pragma warning restore 612, 618
         }

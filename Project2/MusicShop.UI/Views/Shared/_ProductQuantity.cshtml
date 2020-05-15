@@ -1,0 +1,23 @@
+﻿@model MusicShop.Domain.InventoryItem
+<form asp-action="AddInventory" asp-controller="Stores" id="changeQuantityForm">
+    <div class="row">
+        <div class="col-md-12">
+            <input type="hidden" name="Id" value="@ViewBag.Id" />
+            <input type="hidden" name="Id" value="@ViewBag.StoreId" />
+            <div asp-validation-summery="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" id="submitCreate" class="btn btn-outline-dark">
+            </div>
+        </div>
+    </div>
+</form>

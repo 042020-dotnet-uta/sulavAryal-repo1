@@ -22,7 +22,12 @@ namespace MusicShop.UI.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Products.ToListAsync());
+            var result = await _context.Inventory
+                .Include(i => i.Product)
+                .Include(i => i.Store)
+                .AsNoTracking()
+                .ToListAsync();
+            return View(result);
         }
 
         // GET: Products/Details/5

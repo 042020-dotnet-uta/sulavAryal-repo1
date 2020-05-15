@@ -6,6 +6,6 @@ namespace MusicShop.Repository
 {
     public interface ICustomerRepository : IGenericRepository<Customer>
     {
-        //Task<IEnumerable<Customer>> Bear();
+        Task<Customer> FindCustomerById(int? id);
     }
 }

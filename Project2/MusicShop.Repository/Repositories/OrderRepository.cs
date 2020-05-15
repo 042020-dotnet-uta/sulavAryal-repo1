@@ -1,6 +1,5 @@
 ﻿using MusicShop.Domain;
 using MusicShop.Repository.DataAccess;
-using MusicShop.Repository.IRepositories;
 
 namespace MusicShop.Repository
 {
