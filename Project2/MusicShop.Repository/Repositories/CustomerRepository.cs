@@ -35,6 +35,7 @@ namespace MusicShop.Repository
            
         }
 
+       
         public async Task<bool> ValidateCustomer(string username, string password)
         {
             var result = await _context.Customers

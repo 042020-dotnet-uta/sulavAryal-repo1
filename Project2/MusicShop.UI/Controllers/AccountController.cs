@@ -32,6 +32,7 @@ namespace MusicShop.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string txtUserName, string txtPassword)
         {
+            
             var result = await _customerRepository.ValidateCustomer(txtUserName,txtPassword);
             if (result == true)
             {
@@ -47,7 +48,7 @@ namespace MusicShop.UI.Controllers
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principle, props).Wait();
                 return RedirectToAction("Index", "Customers");
             }
-            return View();
+            return View("Index");
         }
 
         [HttpPost]
