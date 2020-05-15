@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using MusicShop.Repository;
 
 namespace MusicShop.UI.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly ICustomerRepository _customerRepository;
+
+        public AccountController(ICustomerRepository customerRepository)
+        {
+            _customerRepository = customerRepository;
+        }
         public IActionResult Index()
         {
             return View();
@@ -18,14 +25,15 @@ namespace MusicShop.UI.Controllers
         [HttpGet]
         public IActionResult Login() 
         {
-            return View("Login");
+            return View("Index");
         
         }
 
         [HttpPost]
-        public IActionResult Login(string txtUserName, string txtPassword)
+        public async Task<IActionResult> Login(string txtUserName, string txtPassword)
         {
-            if (txtUserName.ToLower() == "admin" && (txtPassword == "123"))
+            var result = await _customerRepository.ValidateCustomer(txtUserName,txtPassword);
+            if (result == true)
             {
                 var claims = new List<Claim>
                 {

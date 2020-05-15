@@ -34,5 +34,17 @@ namespace MusicShop.Repository
             }
            
         }
+
+        public async Task<bool> ValidateCustomer(string username, string password)
+        {
+            var result = await _context.Customers
+                .AsNoTracking()
+                .Where(c => c.Email == username && c.Password == password).FirstOrDefaultAsync();
+            if (result != null) 
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

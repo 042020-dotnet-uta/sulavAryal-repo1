@@ -16,7 +16,7 @@ namespace MusicShop.UI.Controllers
     {
         private readonly ICustomerRepository _customerRepository;
 
-        public string SessionKeyName { get; private set; }
+        //public string SessionKeyName { get; private set; }
 
         public CustomersController(ICustomerRepository customerRepository)
         {
