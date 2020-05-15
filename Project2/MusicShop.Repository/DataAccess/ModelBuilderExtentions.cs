@@ -51,7 +51,7 @@ namespace MusicShop.Repository.DataAccess
             // Seeds Customer data
             modelBuilder.Entity<Customer>().HasData(
                 new Customer { Id = 1, FirstName = "Sulav", LastName = "Aryal", Email = "sulav.aryal@outlook.com", Password = "password", UserTypeId = 1 },
-                new Customer { Id = 2, FirstName = "Danyelle", LastName = "Tsosie", Email = "dcove@networking.org", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 2, FirstName = "Danyelle", LastName = "Tsosie", Email = "customer@outlook.com", Password = "password", UserTypeId = 2 },
                 new Customer { Id = 3, FirstName = "Brigitte", LastName = "Laufer", Email = "acloney2@dropbox.com", Password = "password", UserTypeId = 2 },
                 new Customer { Id = 4, FirstName = "Bettie", LastName = "Turek", Email = "tscurrell3@reuters.com", Password = "password", UserTypeId = 2 },
                 new Customer { Id = 5, FirstName = "Kenneth", LastName = "Windsor", Email = "mfonzone4@vk.com", Password = "password", UserTypeId = 2 },

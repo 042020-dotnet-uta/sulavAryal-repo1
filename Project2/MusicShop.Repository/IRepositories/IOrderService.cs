@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MusicShop.Repository
 {
-    public interface IOrderRepository : IGenericRepository<Order>
+    public interface IOrderService : IGenericRepository<Order>
     {
     }
 }

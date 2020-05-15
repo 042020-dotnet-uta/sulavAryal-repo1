@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using MusicShop.Domain;
 using MusicShop.Repository;
-using MusicShop.Repository.DataAccess;
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MusicShop.UI.Controllers
@@ -24,9 +22,10 @@ namespace MusicShop.UI.Controllers
          
         }
 
-        [AllowAnonymous]
+        [Authorize]
         public async Task<IActionResult> Index(string SearchString)
         {
+            ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
             ViewData["Searching"] = ""; // Assume not searching at the begining. 
             var customers = await _customerRepository.GetAllAsync();
 
@@ -40,7 +39,7 @@ namespace MusicShop.UI.Controllers
             return View(customers);
         }
 
-        [Authorize]
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Create()
         {
@@ -48,34 +47,51 @@ namespace MusicShop.UI.Controllers
         }
 
 
-        [Authorize]
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FirstName,LastName,Email,PhoneNo")] Customer customer, [Bind("Street,City,State,Zip")] CustomerAddress customerAddress
+        public async Task<IActionResult> Create(string rePassword, [Bind("FirstName,LastName,Email,PhoneNo,Password")] Customer customer, 
+            [Bind("Street,City,State,Zip")] CustomerAddress customerAddress
         )
         {
            
             if (ModelState.IsValid)
             {
-                var cusAdd = new CustomerAddress 
+                var checkCustomer = await _customerRepository.FindSingleAsync(i => i.Email == customer.Email);
+                if (checkCustomer == null)
                 {
-                    Street = customerAddress.Street,
-                    City = customerAddress.City,
-                    State= customerAddress.State,
-                    Zip = customerAddress.Zip
-                };
-                var cust = new Customer
-                {
-                    FirstName = customer.FirstName,
-                    LastName = customer.LastName,
-                    Email = customer.Email,
-                    PhoneNo = customer.PhoneNo,
-                    CustomerAddress = cusAdd,
-                    UserTypeId = 2
-                };
-                await _customerRepository.AddAsync(cust);
+                    if (customer.Password != rePassword)
+                    {
+                        ModelState.AddModelError("Password", "Password's did't match.");
+                        return View("Create", customer);
+                    }
+                    var cusAdd = new CustomerAddress
+                    {
+                        Street = customerAddress.Street,
+                        City = customerAddress.City,
+                        State = customerAddress.State,
+                        Zip = customerAddress.Zip
+                    };
+                    var cust = new Customer
+                    {
+                        FirstName = customer.FirstName,
+                        LastName = customer.LastName,
+                        Email = customer.Email,
+                        PhoneNo = customer.PhoneNo,
+                        CustomerAddress = cusAdd,
+                        Password = customer.Password,
+                        UserTypeId = 2
+                    };
 
-                return RedirectToAction(nameof(Index));
+                    await _customerRepository.AddAsync(cust);
+
+                    return RedirectToAction(nameof(Index));
+                }
+                else 
+                {
+                    ModelState.AddModelError("Email", "Customer with same email address already exits.");
+                    return View(customer);
+                }               
             }
             return View(customer);
         }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using MusicShop.Repository;
+using Microsoft.AspNetCore.Identity;
 
 namespace MusicShop.UI.Controllers
 {
@@ -36,6 +37,7 @@ namespace MusicShop.UI.Controllers
             var result = await _customerRepository.ValidateCustomer(txtUserName,txtPassword);
             if (result == true)
             {
+
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name,txtUserName)
@@ -51,7 +53,6 @@ namespace MusicShop.UI.Controllers
             return View("Index");
         }
 
-        [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();

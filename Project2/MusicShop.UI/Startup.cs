@@ -26,7 +26,7 @@ namespace MusicShop.UI
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
             {
-                options.LoginPath = "/Account/Login";
+                options.LoginPath = "/Account/Index";
                 options.Cookie.Name = "MusicShopCookie";
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
             });
@@ -35,6 +35,7 @@ namespace MusicShop.UI
             services.AddDbContext<MSDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MusicShopDbContext")));
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IOrderService, OrderService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
