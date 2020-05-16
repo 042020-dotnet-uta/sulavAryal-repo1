@@ -1,0 +1,30 @@
+1. What is not an advantange of Iaas 
+a. Innovate rapidly
+b. Respond quicker to shifting business
+c. Focus on your core business
+d. More capital expense and increases ongoing cost. (ans)
+
+2. Which of the following provider rely on virtual machine technology to deliver servers ?
+a. CaaS
+b. AaaS
+c. PaaS
+d. IaaS (ans)
+
+3 _____ cloud combines multiple cloud types, binding them together by technology that allows data and applications to be shared between them. 
+a) Public
+b) Private
+c) Community
+d) Hybrid (ans)
+
+4. Which continent so far does not have Google Cloud service data center ?
+a. North America
+b. Africa
+c. Asia
+d. Europe
+
+5. Which one is not a type of Service level agreement? 
+a. Customer-based SLA
+b. Service-based SLA
+c. Communication-based SLA (ans)
+d. Multilevel SLA
+
