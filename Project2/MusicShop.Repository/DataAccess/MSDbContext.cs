@@ -21,5 +21,6 @@ namespace MusicShop.Repository.DataAccess
         public DbSet<Product> Products { get; set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<InventoryItem> Inventory { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
     }
 }

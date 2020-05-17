@@ -23,8 +23,9 @@ namespace MusicShop.UI.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> Index(string SearchString)
+        public async Task<IActionResult> Index(string SearchString, bool isSuccess = false)
         {
+            ViewBag.isSuccess = isSuccess;
             ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
             ViewData["Searching"] = ""; // Assume not searching at the begining. 
             var customers = await _customerRepository.GetAllAsync();
@@ -85,7 +86,7 @@ namespace MusicShop.UI.Controllers
 
                     await _customerRepository.AddAsync(cust);
 
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Index), new {isSuccess = true});
                 }
                 else 
                 {

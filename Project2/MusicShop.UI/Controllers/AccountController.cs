@@ -40,7 +40,8 @@ namespace MusicShop.UI.Controllers
 
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name,txtUserName)
+                    new Claim(ClaimTypes.Name,txtUserName),
+                    new Claim(ClaimTypes.Email,txtUserName)
                 };
                 var identity = new ClaimsIdentity(
                     claims, CookieAuthenticationDefaults.AuthenticationScheme
@@ -48,7 +49,7 @@ namespace MusicShop.UI.Controllers
                 var principle = new ClaimsPrincipal(identity);
                 var props = new AuthenticationProperties();
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principle, props).Wait();
-                return RedirectToAction("Index", "Customers");
+                return RedirectToAction("Index", "Home");
             }
             return View("Index");
         }

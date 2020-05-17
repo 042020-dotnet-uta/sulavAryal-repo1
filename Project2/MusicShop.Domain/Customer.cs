@@ -12,12 +12,14 @@ namespace MusicShop.Domain
         /// Gets of sets the first name of customer
         /// </summary>
         [StringLength(128)]
+        [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
         /// <summary>
         /// Gets of sets the last name of customer
         /// </summary>
         [StringLength(128)]
+        [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         /// <summary>
@@ -25,17 +27,20 @@ namespace MusicShop.Domain
         /// </summary>
         [StringLength(128)]
         [EmailAddress]
+        [Required]
         public string Email { get; set; }
         /// <summary>
         /// Gets of sets the phone number of customer
         /// </summary>
         [StringLength(128)]
         [Phone]
+        [Required]
         public string PhoneNo { get; set; }
         /// <summary>
         /// Gets of sets the password of customer
         /// </summary>
         [StringLength(128)]
+        [Required]
         public string Password { get; set; }
         /// <summary>
         /// Gets of sets the customer Address of customer

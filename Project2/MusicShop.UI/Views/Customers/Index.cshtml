@@ -9,6 +9,15 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+@if (ViewBag.isSuccess)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Customer Added Successfully!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
 <form asp-action="Index">
     <div class="form-horizontal">
         <button class="btn btn-outline-secondary mb-2" type="button" data-toggle="collapse" id="btnCollapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
@@ -18,7 +27,7 @@
             <div class="card card-body bg-light">
                 <div class="row">
                     <div class="col-md-6">
-                       
+
                         <div class="form-group">
                             <label class="control-label col-md-5">Search Customer:</label>
                             <div class="col-md-8">

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,11 +32,27 @@ namespace MusicShop.UI
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
             });
 
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = "Cart";
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.IsEssential = true;
+            });
+
+
             services.AddControllersWithViews();
+           
+
             services.AddDbContext<MSDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MusicShopDbContext")));
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IOrderService, OrderService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            // Different instances for different users. 
+            services.AddScoped(ms => ShoppingCart.GetCart(ms));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +76,7 @@ namespace MusicShop.UI
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

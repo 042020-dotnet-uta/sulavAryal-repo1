@@ -1,0 +1,18 @@
+﻿@model HomeViewModel
+@await Html.PartialAsync("_Carousel")
+
+<h2>Featured Instrument of the Week</h2>
+<h4>Suggested Just for you!</h4>
+<style>
+    /* Make the image fully responsive */
+    .carousel-inner img {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<div class="row">
+    @foreach (var product in Model.Products)
+    {
+        <partial name="_ProductsSummary" model="product" />
+    }
+</div>

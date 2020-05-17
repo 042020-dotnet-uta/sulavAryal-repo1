@@ -1,44 +1,18 @@
-﻿@model IEnumerable<MusicShop.Domain.InventoryItem>
+﻿@model ProductListViewModel
 
 @{
-    ViewData["Title"] = "Inventory";
-    int count = 0; 
+    ViewData["Title"] = "ProductList";
 }
 
-<h1> @ViewBag.Store Store Inventory</h1>
+<h2>@Model.CurrentCustomer</h2>
+<h2>@Model.CurrentStore</h2>
 
-<p>
-   
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Product)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-          
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container">
+    <h3 class="display-4">All Products</h3>
+    <div class="row">
+        @foreach (var product in Model.Products)
+        {  
+            <partial name="_ProductsSummary" model="product" />
+        }
+    </div>
+</div>

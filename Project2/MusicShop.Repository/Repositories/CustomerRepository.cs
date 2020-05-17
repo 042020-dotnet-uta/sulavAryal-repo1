@@ -36,17 +36,31 @@ namespace MusicShop.Repository
         }
 
        
-
+        /// <summary>
+        /// Validates the user if username and password match.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
        
         public async Task<bool> ValidateCustomer(string username, string password)
         {
-            var result = await _context.Customers
-                .AsNoTracking()
-                .Where(c => c.Email == username && c.Password == password).FirstOrDefaultAsync();
-            if (result != null) 
+            try
             {
-                return true;
+                var result = await _context.Customers
+              .AsNoTracking()
+              .Where(c => c.Email == username && c.Password == password).FirstOrDefaultAsync();
+                if (result != null)
+                {
+                    return true;
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+          
             return false;
         }
     }

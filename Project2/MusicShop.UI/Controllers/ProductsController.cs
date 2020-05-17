@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MusicShop.Domain;
+using MusicShop.Repository;
 using MusicShop.Repository.DataAccess;
 
 namespace MusicShop.UI.Controllers
@@ -13,15 +15,22 @@ namespace MusicShop.UI.Controllers
     public class ProductsController : Controller
     {
         private readonly MSDbContext _context;
+        private readonly IProductRepository _productRepository;
+        private readonly ICustomerRepository _customerRepository;
 
-        public ProductsController(MSDbContext context)
+        public ProductsController(MSDbContext context, IProductRepository productRepository,
+            ICustomerRepository customerRepository)
         {
             _context = context;
+            _productRepository = productRepository;
+            _customerRepository = customerRepository;
         }
-
+        
+      
         // GET: Products
         public async Task<IActionResult> Index()
         {
+
             var result = await _context.Inventory
                 .Include(i => i.Product)
                 .Include(i => i.Store)
@@ -63,6 +72,7 @@ namespace MusicShop.UI.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -154,5 +164,7 @@ namespace MusicShop.UI.Controllers
         {
             return _context.Products.Any(e => e.Id == id);
         }
+
+
     }
 }

@@ -50,26 +50,26 @@ namespace MusicShop.Repository.DataAccess
             #region Customer Seed
             // Seeds Customer data
             modelBuilder.Entity<Customer>().HasData(
-                new Customer { Id = 1, FirstName = "Sulav", LastName = "Aryal", Email = "sulav.aryal@outlook.com", Password = "password", UserTypeId = 1 },
-                new Customer { Id = 2, FirstName = "Danyelle", LastName = "Tsosie", Email = "customer@outlook.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 3, FirstName = "Brigitte", LastName = "Laufer", Email = "acloney2@dropbox.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 4, FirstName = "Bettie", LastName = "Turek", Email = "tscurrell3@reuters.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 5, FirstName = "Kenneth", LastName = "Windsor", Email = "mfonzone4@vk.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 6, FirstName = "Maribeth", LastName = "Fontenot", Email = "igallaccio5@tmall.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 7, FirstName = "Barret", LastName = "Waltrip", Email = "aasken6@etsy.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 8, FirstName = "Jeana", LastName = "Dunston", Email = "dmagrane7@dagondesign.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 9, FirstName = "Mirian", LastName = "Stroda", Email = "gdibdale8@nih.gov", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 10, FirstName = "Beverley", LastName = "Digangi", Email = "acockran9@arizona.edu", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 11, FirstName = "Lucilla", LastName = "Chang", Email = "ymartyna@ebay.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 12, FirstName = "Gigi", LastName = "Degree", Email = "cbmccaughenb@umn.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 13, FirstName = "Taneka", LastName = "Ord", Email = "bianizzic@wisc.edu", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 14, FirstName = "Moises", LastName = "Meche", Email = "aharborowd@nbcnews.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 15, FirstName = "Hans", LastName = "Spurgin", Email = "nellyatte@homestead.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 16, FirstName = "Mireya", LastName = "Pierro", Email = "ewigginf@skyrock.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 17, FirstName = "Susy", LastName = "Argo", Email = "susy@outlook.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 18, FirstName = "Althea", LastName = "Dent", Email = "mpeyroh@foxnews.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 19, FirstName = "Rosana", LastName = "Purvis", Email = "jarnaudini@webmd.com", Password = "password", UserTypeId = 2 },
-                new Customer { Id = 20, FirstName = "Serena", LastName = "San", Email = "omelrosej@artisteer.com", Password = "password", UserTypeId = 2 }
+                new Customer { Id = 1, FirstName = "Sulav", LastName = "Aryal",PhoneNo = "1111122221", Email = "sulav.aryal@outlook.com", Password = "password", UserTypeId = 1 },
+                new Customer { Id = 2, FirstName = "Danyelle", LastName = "Tsosie", PhoneNo = "1111122222", Email = "customer@outlook.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 3, FirstName = "Brigitte", LastName = "Laufer", PhoneNo = "1111122223", Email = "acloney2@dropbox.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 4, FirstName = "Bettie", LastName = "Turek", PhoneNo = "1111122224", Email = "tscurrell3@reuters.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 5, FirstName = "Kenneth", LastName = "Windsor", PhoneNo = "1111122225", Email = "mfonzone4@vk.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 6, FirstName = "Maribeth", LastName = "Fontenot", PhoneNo = "1111122226", Email = "igallaccio5@tmall.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 7, FirstName = "Barret", LastName = "Waltrip", PhoneNo = "1111122227", Email = "aasken6@etsy.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 8, FirstName = "Jeana", LastName = "Dunston", PhoneNo = "1111122228", Email = "dmagrane7@dagondesign.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 9, FirstName = "Mirian", LastName = "Stroda", PhoneNo = "1111122229", Email = "gdibdale8@nih.gov", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 10, FirstName = "Beverley", LastName = "Digangi", PhoneNo = "1111122230", Email = "acockran9@arizona.edu", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 11, FirstName = "Lucilla", LastName = "Chang", PhoneNo = "1111122231", Email = "ymartyna@ebay.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 12, FirstName = "Gigi", LastName = "Degree", PhoneNo = "1111122232", Email = "cbmccaughenb@umn.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 13, FirstName = "Taneka", LastName = "Ord", PhoneNo = "1111122233", Email = "bianizzic@wisc.edu", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 14, FirstName = "Moises", LastName = "Meche", PhoneNo = "1111122234", Email = "aharborowd@nbcnews.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 15, FirstName = "Hans", LastName = "Spurgin", PhoneNo = "1111122235", Email = "nellyatte@homestead.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 16, FirstName = "Mireya", LastName = "Pierro", PhoneNo = "1111122236", Email = "ewigginf@skyrock.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 17, FirstName = "Susy", LastName = "Argo", PhoneNo = "1111122237", Email = "susy@outlook.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 18, FirstName = "Althea", LastName = "Dent", PhoneNo = "1111122238", Email = "mpeyroh@foxnews.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 19, FirstName = "Rosana", LastName = "Purvis", PhoneNo = "1111122239", Email = "jarnaudini@webmd.com", Password = "password", UserTypeId = 2 },
+                new Customer { Id = 20, FirstName = "Serena", LastName = "San", PhoneNo = "1111122240", Email = "omelrosej@artisteer.com", Password = "password", UserTypeId = 2 }
             );
             #endregion
 
