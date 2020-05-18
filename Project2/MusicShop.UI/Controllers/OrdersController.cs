@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using MusicShop.Domain;
 using MusicShop.Repository;
 using MusicShop.Repository.DataAccess;
 using MusicShop.UI.ViewModel;
@@ -17,14 +18,16 @@ namespace MusicShop.UI.Controllers
         private readonly IOrderService _orderService;
         private readonly ShoppingCart _shoppingCart;
         private readonly IProductRepository _productRepository;
+        private readonly ICustomerRepository _customerRepository;
 
-        public OrdersController(IOrderService orderService, ShoppingCart shoppingCart, IProductRepository productRepository)
+        public OrdersController(IOrderService orderService, ShoppingCart shoppingCart, IProductRepository productRepository, ICustomerRepository customerRepository)
         {
             _orderService = orderService;
             _shoppingCart = shoppingCart;
             _productRepository = productRepository;
+            _customerRepository = customerRepository;
         }
-        
+
 
         // GET: Orders
         public async Task<IActionResult> Index()
@@ -33,7 +36,7 @@ namespace MusicShop.UI.Controllers
             return View(orders);
         }
 
-        public async Task<ViewResult> ProductList() 
+        public async Task<ViewResult> ProductList()
         {
             var products = await _productRepository.GetAllAsync();
             ProductListViewModel pvm = new ProductListViewModel();
@@ -42,9 +45,34 @@ namespace MusicShop.UI.Controllers
             return View(products);
         }
 
-        
+        public async Task<IActionResult> Checkout(int storeId)
+        {
+            var custResult = await _customerRepository.FindSingleAsync(c => c.Email == User.FindFirstValue(ClaimTypes.Name));
+            //var storeResult = await 
+            Order order = new Order
+            {
+                CustomerId = custResult.Id,
+                StoreId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier)),
+                OrderDate = DateTimeOffset.Now,
+            };
+            var username = User.FindFirstValue(ClaimTypes.Name);
+            var items = _shoppingCart.GetShoppingCartItems(username);
+            _shoppingCart.ShoppingCartItems = items;
+            if (_shoppingCart.ShoppingCartItems.Count == 0)
+            {
+                ModelState.AddModelError("", "Your cart is empty, add some products first");
+            }
 
-       
+            if (ModelState.IsValid)
+            {
+                await _orderService.CreateOrder(order);
+                _shoppingCart.ClearCart();
+                return RedirectToAction("CheckoutComplete");
+            }
+
+            //return View(order);
+            return RedirectToAction("Index", "Home");
+        }
     }
 
 }

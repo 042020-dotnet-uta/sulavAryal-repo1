@@ -15,5 +15,6 @@ namespace MusicShop.UI.ViewModel
         /// Total Value for the shopping cart.
         /// </summary>
         public decimal ShoppingCartTotal { get; set; }
+        public int? StoreId { get; set; }
     }
 }

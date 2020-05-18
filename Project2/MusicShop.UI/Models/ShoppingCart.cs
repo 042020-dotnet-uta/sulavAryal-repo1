@@ -48,7 +48,7 @@ namespace MusicShop.UI
         /// </summary>
         /// <param name="product"></param>
         /// <param name="amount"></param>
-        public void AddToCart(Product product, int amount, string username)
+        public void AddToCart(Product product, int amount, string username, string storeId)
         {
             var shoppingCartItem =
                     _context.ShoppingCartItems.SingleOrDefault(
@@ -61,10 +61,10 @@ namespace MusicShop.UI
                     ShoppingCartId = ShoppingCartId,
                     Product = product,
                     Quantity = 1,
-                    customerEmail = username
-                    
+                    customerEmail = username,
+                    StoreId = storeId
 
-            };
+                };
 
                 _context.ShoppingCartItems.Add(shoppingCartItem);
             }
@@ -111,11 +111,11 @@ namespace MusicShop.UI
         /// Gets all the shopping cart items 
         /// </summary>
         /// <returns></returns>
-        public List<ShoppingCartItem> GetShoppingCartItems()
+        public List<ShoppingCartItem> GetShoppingCartItems(string username)
         {
             return ShoppingCartItems ??
                    (ShoppingCartItems =
-                       _context.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
+                       _context.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId && c.customerEmail == username)
                            .Include(s => s.Product)
                            .ToList());
         }

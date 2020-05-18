@@ -38,7 +38,7 @@
     </table>
 
     <div class="text-right">
-        <div class="btn-group ">
+        @*<div class="btn-group ">
             <a class="btn btn-success" asp-controller="Order" asp-action="Checkout">Check out</a>
             <a class="btn-group">
                 <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -48,6 +48,19 @@
                     <li><a asp-controller="Home" asp-action="Index">Products</a></li>
                 </ul>
             </a>
+        </div>*@
+
+        <div class="dropdown">
+            <a type="button" asp-controller="Orders" asp-action="Checkout" asp-route-StoreId="@Model.StoreId" class="btn btn-success">
+                Confirm Order
+            </a>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Add more products<span class="caret"></span>
+            </button>
+            <div class="dropdown-menu">
+                <a asp-controller="Home" asp-action="Index" asp-route-Id="@Model.StoreId" class="p-2">Products</a>
+            </div>
         </div>
+
     </div>
 </div>

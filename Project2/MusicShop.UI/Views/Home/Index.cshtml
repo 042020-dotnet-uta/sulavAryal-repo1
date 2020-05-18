@@ -1,8 +1,9 @@
-﻿@model HomeViewModel
-@await Html.PartialAsync("_Carousel")
+﻿@using System.Security.Claims
+@model HomeViewModel
+@*@await Html.PartialAsync("_Carousel")*@
 
-<h2>Featured Instrument of the Week</h2>
-<h4>Suggested Just for you!</h4>
+@*<h2>Featured Instrument of the Week</h2>*@
+@*<h4>Suggested Just for you!</h4>*@
 <style>
     /* Make the image fully responsive */
     .carousel-inner img {
@@ -10,6 +11,7 @@
         height: 100%;
     }
 </style>
+@{ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);}
 <div class="row">
     @foreach (var product in Model.Products)
     {

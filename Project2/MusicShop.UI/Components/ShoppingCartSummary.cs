@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MusicShop.Domain;
 using MusicShop.UI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MusicShop.UI.Components
@@ -11,14 +13,19 @@ namespace MusicShop.UI.Components
 	public class ShoppingCartSummary : ViewComponent
 	{
 		private readonly ShoppingCart _shoppingCart;
-		public ShoppingCartSummary(ShoppingCart shoppingCart)
+		private readonly IHttpContextAccessor _httpContextAccessor;
+
+		public ShoppingCartSummary(ShoppingCart shoppingCart, IHttpContextAccessor httpContextAccessor)
 		{
 			_shoppingCart = shoppingCart;
+			_httpContextAccessor = httpContextAccessor;
 		}
 
 		public IViewComponentResult Invoke()
 		{
-			var items = _shoppingCart.GetShoppingCartItems();
+
+			var username = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Name);
+			var items = _shoppingCart.GetShoppingCartItems(username);
 						//  new List<ShoppingCartItem>() { new ShoppingCartItem(), new ShoppingCartItem() };
 			_shoppingCart.ShoppingCartItems = items;
 

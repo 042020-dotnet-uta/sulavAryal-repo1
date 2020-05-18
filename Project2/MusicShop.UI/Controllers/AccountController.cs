@@ -49,7 +49,8 @@ namespace MusicShop.UI.Controllers
                 var principle = new ClaimsPrincipal(identity);
                 var props = new AuthenticationProperties();
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principle, props).Wait();
-                return RedirectToAction("Index", "Home");
+                ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+                return RedirectToAction("ChooseStore", "Home");
             }
             return View("Index");
         }

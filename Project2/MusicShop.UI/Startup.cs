@@ -43,7 +43,10 @@ namespace MusicShop.UI
 
 
             services.AddControllersWithViews();
-           
+
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+
+
 
             services.AddDbContext<MSDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MusicShopDbContext")));
             services.AddTransient<ICustomerRepository, CustomerRepository>();

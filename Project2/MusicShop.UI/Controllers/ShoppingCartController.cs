@@ -21,26 +21,40 @@ namespace MusicShop.UI.Controllers
         }
         public ViewResult Index()
         {
-            // returns shopping cart items.
-            var items = _shoppingCart.GetShoppingCartItems();
-            _shoppingCart.ShoppingCartItems = items;
+            int? storeId = 0;
 
+            if (TempData.ContainsKey("storeId"))
+            {
+                storeId = TempData["storeId"] as int?;
+                ViewBag.StoreId = storeId;
+            }
+            // returns shopping cart items.
+            var username = User.FindFirstValue(ClaimTypes.Name);
+            var store = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var items = _shoppingCart.GetShoppingCartItems(username);
+            _shoppingCart.ShoppingCartItems = items;
+            ViewBag.UserName = username;
+            ViewBag.StoreId = Convert.ToInt32(store);
             var shoppingCartVM = new ShoppingCartViewModel
             {
                 ShoppingCart = _shoppingCart,
-                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
-            };
+                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal(),
+                StoreId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier))
+        };
             return View(shoppingCartVM);
         }
 
-        public async Task<RedirectToActionResult> AddToShoppingCart(int id)
+        public async Task<RedirectToActionResult> AddToShoppingCart(int id, int storeId = 0)
         {
             var username = User.FindFirstValue(ClaimTypes.Name);
+            var store = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewBag.UserName = username;
+            ViewBag.StoreId = Convert.ToInt32(store);
             var selectedProduct = await _productRepository.FindSingleAsync(p => p.Id == id);
             if (selectedProduct != null)
             {
-               
-                _shoppingCart.AddToCart(selectedProduct, 1, username);
+                TempData["storeId"] = storeId;
+                _shoppingCart.AddToCart(selectedProduct, 1, username, storeId.ToString());
             }
             return RedirectToAction("Index");
         }
