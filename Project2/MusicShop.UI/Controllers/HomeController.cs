@@ -29,10 +29,12 @@ namespace MusicShop.UI.Controllers
             _productRepository = productRepository;
         }
 
-        public async Task<ViewResult> Index(int id = 0, bool fromCheckout = false, bool isSuccess = false)
+        public async Task<ViewResult> Index(int id = 0, 
+            bool fromCheckout = false, bool isSuccess = false, bool emptyCart = false)
         {
             ViewBag.IsSuccess = isSuccess;
             ViewBag.fromCheckout = fromCheckout;
+            ViewBag.EmptyCart = emptyCart;
             ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
             var StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -81,6 +83,11 @@ namespace MusicShop.UI.Controllers
         public async Task<IActionResult> ChooseStore(IFormCollection form)
         {
             var customer = User.FindFirstValue(ClaimTypes.Name);
+            var formStoreId = form["StoreId"][1];
+            if (string.IsNullOrEmpty(customer) || string.IsNullOrEmpty(formStoreId)) 
+            {
+                return RedirectToAction("Logout","Account");
+            }
             if (form["StoreId"][1] != "Choose a location")
             {
                 var result = await _productRepository.GetStoreInventory(Convert.ToInt32(form["StoreId"][1]));
@@ -92,6 +99,10 @@ namespace MusicShop.UI.Controllers
                     new Claim(ClaimTypes.Name, customer),
                     new Claim(ClaimTypes.NameIdentifier, form["StoreId"][1])
                 };
+                if (claims == null) 
+                {
+                    NotFound();
+                }
                 var identity = new ClaimsIdentity(
                     claims, CookieAuthenticationDefaults.AuthenticationScheme
                 );

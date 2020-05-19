@@ -4,6 +4,7 @@ using MusicShop.Domain;
 using MusicShop.Repository;
 using MusicShop.Repository.DataAccess;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MusicShop.UI.Controllers
@@ -26,7 +27,7 @@ namespace MusicShop.UI.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-
+            ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
             var result = await _context.Inventory
                 .Include(i => i.Product)
                 .Include(i => i.Store)

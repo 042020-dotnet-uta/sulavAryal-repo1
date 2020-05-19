@@ -34,9 +34,11 @@ namespace MusicShop.UI.Controllers
             }
             else if(id.HasValue)
             {
+                ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
                 var storeOrders = await _orderService.GetOrdersByStore(id);
                 return View(storeOrders);
             }
+            ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
             var orders = await _orderService.GetAllOrders();
             return View(orders);
         }
@@ -79,7 +81,7 @@ namespace MusicShop.UI.Controllers
             _shoppingCart.ShoppingCartItems = items;
             if (_shoppingCart.ShoppingCartItems.Count == 0)
             {
-                ModelState.AddModelError("", "Your cart is empty, add some products first");
+                return RedirectToAction("Index", "Home", new { fromCheckout = true, isSuccess = false, emptyCart = true });
             }
 
             if (ModelState.IsValid)

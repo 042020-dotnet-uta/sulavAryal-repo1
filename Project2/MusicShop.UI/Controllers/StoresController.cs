@@ -27,6 +27,7 @@ namespace MusicShop.UI.Controllers
         // GET: Stores
         public async Task<IActionResult> Index()
         {
+            ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
             return View(await _context.Stores
                 .Include(s => s.Products)
                 .ToListAsync());
@@ -69,6 +70,7 @@ namespace MusicShop.UI.Controllers
                 InventoryItems = result,
                 IsSuccess = ViewBag.IsSuccess
             };
+
             return View("Inventory", storeInVM);
         }
 
