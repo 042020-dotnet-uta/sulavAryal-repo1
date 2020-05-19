@@ -1,0 +1,29 @@
+1. Which statement amongst below does not describe microservices.
+a  fine-grained interfaces
+b. IDEAL cloud application architectures
+c. monolith programming and persistence (ans) (polyglot in place of monolith)
+d. lightweight container deployment
+
+2. Which one is not a requirement in technical service contract. 
+a. Data model Standardization
+b. Policy Standardization
+c. Functional expression Standardization
+d. Service level Standardization (ans)
+
+3. What does SOA stand for ? 
+a. Strategy Oriented Architecture.(ans)
+b. Service Oriented Architecture.
+c. Service Oriented Accessment
+d. Service Oriented Ambiguity
+
+4. What can have the largest impact on the performance of an SOA?
+a. Service granularity	(ans)
+b. Use of open standards
+C. Service version management
+d. Business monitoring of Key Performance Indicators
+
+5. What is not one of the major causes of difficulty in testing SOA based application
+a. Heterogeneity and complexity of solution.
+b. Huge set of testing combinations due to integration of autonomous services.
+c. Inclusion of services from different and competing vendors.
+d. Platform is fixed due to unavailability of new features and services.
