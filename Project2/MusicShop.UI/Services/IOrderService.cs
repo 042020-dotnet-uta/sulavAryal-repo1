@@ -9,6 +9,8 @@ namespace MusicShop.UI
     {
         Task<IEnumerable<Order>> GetAllOrders();
         Task<Order> GetOrderById(int? id);
+        Task<IEnumerable<Order>> GetOrdersByStore(int? id);
+        Task<IEnumerable<Order>> GetOrdersByCustomer(int? id);
         Task CreateOrder(Order order);
     }
 }

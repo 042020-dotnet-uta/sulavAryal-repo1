@@ -26,8 +26,17 @@ namespace MusicShop.UI.Controllers
 
 
         // GET: Orders
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            else if(id.HasValue)
+            {
+                var storeOrders = await _orderService.GetOrdersByStore(id);
+                return View(storeOrders);
+            }
             var orders = await _orderService.GetAllOrders();
             return View(orders);
         }
@@ -100,6 +109,21 @@ namespace MusicShop.UI.Controllers
             };
            
             return View(orderDetailVM);
+        }
+
+        public async Task<IActionResult> CustomerOrder(int? id) 
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            else if (id.HasValue)
+            {
+                var storeOrders = await _orderService.GetOrdersByCustomer(id);
+                return View("Index",storeOrders);
+            }
+            var orders = _orderService.GetAllOrders();
+            return View("Index",orders);
         }
     }
 }

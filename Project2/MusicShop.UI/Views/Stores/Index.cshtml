@@ -22,6 +22,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
+            <td><a asp-controller="Orders" asp-route-id="@item.Id">Order History</a></td>
             <td>
                 <a asp-action="Inventory" asp-route-id="@item.Id">Inventory</a>
             </td>

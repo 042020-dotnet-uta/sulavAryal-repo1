@@ -104,6 +104,50 @@ namespace MusicShop.UI
            
         }
 
-       
+        public async Task<IEnumerable<Order>> GetOrdersByCustomer(int? id)
+        {
+            if (id == null)
+            {
+                return null;
+            }
+            try
+            {
+                return await _context.Orders
+               .Include(o => o.OrderLineItems)
+               .Include(o => o.Customer)
+               .Include(o => o.Store)
+               .AsNoTracking()
+               .Where(o => o.CustomerId == id)
+               .ToListAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<Order>> GetOrdersByStore(int? id)
+        {
+            if (id == null)
+            {
+                return null;
+            }
+            try
+            {
+                return await _context.Orders
+               .Include(o => o.OrderLineItems)
+               .Include(o => o.Customer)
+               .Include(o => o.Store)
+               .AsNoTracking()
+               .Where(o => o.StoreId == id)
+               .ToListAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -74,6 +74,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Email)
                     </td>
+                    <td>  <a asp-controller="Orders" asp-action="CustomerOrder" asp-route-id="@item.Id">Order History</a></td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                         <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
