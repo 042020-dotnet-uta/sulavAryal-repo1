@@ -83,6 +83,23 @@ namespace MusicShop.UI.Controllers
             //return View(order);
             return RedirectToAction("Index", "Home");
         }
-    }
 
+        public async Task<IActionResult> Details(int? id) 
+        {
+            if (id == null) 
+            {
+                return NotFound();
+            }
+            // bring in orders and order line items
+            var order = await _orderService.GetOrderById(id);
+            var products = await _productRepository.GetAllAsync();
+            var orderDetailVM = new OrderDetailViewModel 
+            {
+                Order = order,
+                Products = products
+            };
+           
+            return View(orderDetailVM);
+        }
+    }
 }

@@ -79,7 +79,31 @@ namespace MusicShop.UI
                 .AsNoTracking()
                 .ToListAsync();
         }
+        
+        public async Task<Order> GetOrderById(int? id)
+        {
+            if (id == null) 
+            {
+                return null;
+            }
+            try
+            {
+                return await _context.Orders
+               .Include(o => o.OrderLineItems)
+               .Include(o => o.Customer)
+               .Include(o => o.Store)
+               .AsNoTracking()
+               .Where(o=>o.Id == id)
+               .FirstOrDefaultAsync();
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+           
+        }
 
+       
     }
 }
