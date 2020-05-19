@@ -50,7 +50,7 @@ namespace MusicShop.Domain
         /// <summary>
         /// Gets of sets the user type of customer, foreign key.
         /// </summary>
-       
+
         public int? UserTypeId { get; set; }
 
         /// <summary>

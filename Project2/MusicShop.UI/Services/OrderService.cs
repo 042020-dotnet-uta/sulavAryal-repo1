@@ -6,7 +6,6 @@ using MusicShop.Repository.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MusicShop.UI
@@ -56,14 +55,14 @@ namespace MusicShop.UI
                         Quantity = newQuantity,
                         ChangedDate = DateTimeOffset.Now,
                         LoggedUserId = order.CustomerId
-                };
-                    
+                    };
+
                     _context.OrderLineItems.Add(orderLineItem);
                     _context.Update(inventoryToUpdate);
                 }
                 await _context.SaveChangesAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw;

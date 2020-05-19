@@ -19,7 +19,7 @@ namespace MusicShop.UI.Controllers
         public CustomersController(ICustomerRepository customerRepository)
         {
             _customerRepository = customerRepository;
-         
+
         }
 
         [Authorize]
@@ -51,11 +51,11 @@ namespace MusicShop.UI.Controllers
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(string rePassword, [Bind("FirstName,LastName,Email,PhoneNo,Password")] Customer customer, 
+        public async Task<IActionResult> Create(string rePassword, [Bind("FirstName,LastName,Email,PhoneNo,Password")] Customer customer,
             [Bind("Street,City,State,Zip")] CustomerAddress customerAddress
         )
         {
-           
+
             if (ModelState.IsValid)
             {
                 var checkCustomer = await _customerRepository.FindSingleAsync(i => i.Email == customer.Email);
@@ -85,14 +85,15 @@ namespace MusicShop.UI.Controllers
                     };
 
                     await _customerRepository.AddAsync(cust);
-
-                    return RedirectToAction(nameof(Index), new {isSuccess = true});
+                    ViewBag.IsSuccess = true;
+                    ModelState.Clear();
+                    return View();
                 }
-                else 
+                else
                 {
                     ModelState.AddModelError("Email", "Customer with same email address already exits.");
                     return View(customer);
-                }               
+                }
             }
             return View(customer);
         }
@@ -200,6 +201,6 @@ namespace MusicShop.UI.Controllers
             await _customerRepository.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
-     
+
     }
 }

@@ -29,7 +29,7 @@ namespace MusicShop.UI.Controllers
             _productRepository = productRepository;
         }
 
-        public async Task<ViewResult> Index(int id=0,bool fromCheckout=false, bool isSuccess=false)
+        public async Task<ViewResult> Index(int id = 0, bool fromCheckout = false, bool isSuccess = false)
         {
             ViewBag.IsSuccess = isSuccess;
             ViewBag.fromCheckout = fromCheckout;
@@ -42,7 +42,7 @@ namespace MusicShop.UI.Controllers
 
             if (TempData.ContainsKey("storeId"))
             {
-              
+
 
                 storeId = TempData["storeId"] as int?;
                 ViewBag.StoreId = StoreId;
@@ -53,10 +53,10 @@ namespace MusicShop.UI.Controllers
                 Products = result,
                 StoreId = Convert.ToInt32(ViewBag.StoreId)
             };
-            if (id != 0) 
+            if (id != 0)
             {
                 ViewBag.StoreId = id;
-                
+
                 result = await _productRepository.GetStoreInventory(id);
                 homeViewModel = new HomeViewModel
                 {
@@ -106,7 +106,7 @@ namespace MusicShop.UI.Controllers
                 {
                     return NotFound();
                 }
-              
+
                 TempData["storeId"] = Convert.ToInt32(form["StoreId"][1]);
                 return RedirectToAction("Index");
             }

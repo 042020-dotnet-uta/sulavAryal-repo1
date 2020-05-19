@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace MusicShop.Domain
 {
@@ -29,7 +27,7 @@ namespace MusicShop.Domain
         /// <summary>
         /// Gets or Sets Product code
         /// </summary>
-        public string  ProductCode { get; set; }
+        public string ProductCode { get; set; }
 
 
         /// <summary>
@@ -43,7 +41,7 @@ namespace MusicShop.Domain
         /// InventoryItems and Product.
         /// </summary>
 
-        public ICollection<InventoryItem> Inventory{get;set;}
+        public ICollection<InventoryItem> Inventory { get; set; }
 
     }
 }

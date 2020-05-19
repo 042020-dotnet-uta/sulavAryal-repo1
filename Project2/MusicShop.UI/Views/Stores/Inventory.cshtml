@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MusicShop.Domain.InventoryItem>
+﻿@model StoreInventoryViewModel
 
 @{
     ViewData["Title"] = "Inventory";
@@ -7,47 +7,63 @@
 <h1> @ViewBag.Store Store Inventory</h1>
 
 <p>
-   
+    @if (Model.IsSuccess == true)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Product inventory Updated Successfully!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Product)
+                Product Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product.Price)
+                Price
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quantity)
+                Quantity
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ChangedDate)
+                Changed Date
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChangedDate)
-            </td>
-            <td>
-                <a asp-controller="Stores" asp-action="AddInventory" asp-route-id="@item.Product.Id">Add Inventory</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.InventoryItems)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChangedDate)
+                </td>
+                <td>
+                    <a asp-controller="Stores" asp-action="AddInventory" asp-route-id="@item.Product.Id">Add Inventory</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<script>
+    $(document).ready(function () {
+        // show the alert
+        setTimeout(function () {
+            $(".alert").alert('close');
+        }, 2000);
+    });
+</script>
+

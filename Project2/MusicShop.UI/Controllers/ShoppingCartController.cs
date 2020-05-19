@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MusicShop.Repository;
 using MusicShop.UI.ViewModel;
+using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace MusicShop.UI.Controllers
 {
@@ -40,7 +38,7 @@ namespace MusicShop.UI.Controllers
                 ShoppingCart = _shoppingCart,
                 ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal(),
                 StoreId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier))
-        };
+            };
             return View(shoppingCartVM);
         }
 

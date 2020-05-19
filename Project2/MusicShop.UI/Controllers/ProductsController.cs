@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MusicShop.Domain;
 using MusicShop.Repository;
 using MusicShop.Repository.DataAccess;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MusicShop.UI.Controllers
 {
@@ -25,8 +21,8 @@ namespace MusicShop.UI.Controllers
             _productRepository = productRepository;
             _customerRepository = customerRepository;
         }
-        
-      
+
+
         // GET: Products
         public async Task<IActionResult> Index()
         {

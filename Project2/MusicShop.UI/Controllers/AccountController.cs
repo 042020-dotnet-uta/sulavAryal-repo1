@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using MusicShop.Repository;
-using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace MusicShop.UI.Controllers
 {
@@ -24,17 +21,17 @@ namespace MusicShop.UI.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult Login() 
+        public IActionResult Login()
         {
             return View("Index");
-        
+
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(string txtUserName, string txtPassword)
         {
-            
-            var result = await _customerRepository.ValidateCustomer(txtUserName,txtPassword);
+
+            var result = await _customerRepository.ValidateCustomer(txtUserName, txtPassword);
             if (result == true)
             {
 

@@ -1,7 +1,9 @@
 ﻿@model MusicShop.Domain.InventoryItem
 
+
 <h4>Add Inventory into Store</h4>
 <hr />
+
 <form asp-action="UpdateInventory">
     <div class="row">
         <div class="col-md-4">
@@ -23,7 +25,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Quantity" class="control-label"></label>
-                <input asp-for="Quantity" class="form-control">
+                <input asp-for="Quantity" class="form-control" disabled>
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label">Add Quantity</label>
+                <input name="Quantity" class="form-control" type="number">
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">

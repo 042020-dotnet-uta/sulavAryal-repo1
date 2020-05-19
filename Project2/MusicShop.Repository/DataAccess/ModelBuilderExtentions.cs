@@ -19,7 +19,7 @@ namespace MusicShop.Repository.DataAccess
         /// <param name="modelBuilder">'this' keyword at the begining makes this a extention of the parameter type</param>
         public static void Seed(this ModelBuilder modelBuilder)
         {
- 
+
 
             #region CustomerAddress Seed
             // Seeds UserType data
@@ -50,7 +50,7 @@ namespace MusicShop.Repository.DataAccess
             #region Customer Seed
             // Seeds Customer data
             modelBuilder.Entity<Customer>().HasData(
-                new Customer { Id = 1, FirstName = "Sulav", LastName = "Aryal",PhoneNo = "1111122221", Email = "sulav.aryal@outlook.com", Password = "password", UserTypeId = 1 },
+                new Customer { Id = 1, FirstName = "Sulav", LastName = "Aryal", PhoneNo = "1111122221", Email = "sulav.aryal@outlook.com", Password = "password", UserTypeId = 1 },
                 new Customer { Id = 2, FirstName = "Danyelle", LastName = "Tsosie", PhoneNo = "1111122222", Email = "customer@outlook.com", Password = "password", UserTypeId = 2 },
                 new Customer { Id = 3, FirstName = "Brigitte", LastName = "Laufer", PhoneNo = "1111122223", Email = "acloney2@dropbox.com", Password = "password", UserTypeId = 2 },
                 new Customer { Id = 4, FirstName = "Bettie", LastName = "Turek", PhoneNo = "1111122224", Email = "tscurrell3@reuters.com", Password = "password", UserTypeId = 2 },

@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MusicShop.UI
 {
@@ -13,7 +10,7 @@ namespace MusicShop.UI
         [Display(Name = "Name")]
         public string CustomerName { get; set; }
         public int ProductId { get; set; }
-        [Display(Name ="Product")]
+        [Display(Name = "Product")]
         public string ProductName { get; set; }
         public IEnumerable<SelectListItem> Products { get; set; }
         public int Quantity { get; set; }

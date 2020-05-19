@@ -4,8 +4,6 @@ using MusicShop.Repository.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MusicShop.Repository
@@ -14,7 +12,7 @@ namespace MusicShop.Repository
     {
         private readonly MSDbContext _context;
 
-        public ProductRepository(MSDbContext context):base(context)
+        public ProductRepository(MSDbContext context) : base(context)
         {
             _context = context;
         }
@@ -52,11 +50,12 @@ namespace MusicShop.Repository
         {
             try
             {
-                return await _context.Inventory
-                    .Include(i=>i.Product)
-                    .Include(i=>i.Store)
+                var result = await _context.Inventory
+                    .Include(i => i.Product)
+                    .Include(i => i.Store)
                     .AsNoTracking()
                     .Where(c => c.StoreId == id).ToListAsync();
+                return result;
             }
             catch (Exception)
             {
@@ -64,6 +63,6 @@ namespace MusicShop.Repository
             }
 
         }
-       
+
     }
 }

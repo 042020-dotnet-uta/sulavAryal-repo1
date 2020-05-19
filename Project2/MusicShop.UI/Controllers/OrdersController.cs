@@ -1,13 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using MusicShop.Domain;
 using MusicShop.Repository;
-using MusicShop.Repository.DataAccess;
 using MusicShop.UI.ViewModel;
 using System;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -59,16 +54,16 @@ namespace MusicShop.UI.Controllers
             var username = User.FindFirstValue(ClaimTypes.Name);
             var inventory = await _productRepository.GetStoreInventory(storeId);
             var items = _shoppingCart.GetShoppingCartItems(username);
-            
+
             foreach (var product in inventory)
             {
                 foreach (var item in items)
                 {
-                    if (item.Product.Id == product.ProductId && item.Quantity > product.Quantity) 
+                    if (item.Product.Id == product.ProductId && item.Quantity > product.Quantity)
                     {
                         ModelState.AddModelError("", $"Sorry we don't have {item.Quantity} of {item.Product.Name} right now ");
                         _shoppingCart.ClearCart();
-                        return RedirectToAction("Index","Home", new { fromCheckout = true, isSuccess = false });
+                        return RedirectToAction("Index", "Home", new { fromCheckout = true, isSuccess = false });
                     }
                 }
             }
@@ -82,7 +77,7 @@ namespace MusicShop.UI.Controllers
             {
                 await _orderService.CreateOrder(order);
                 _shoppingCart.ClearCart();
-                return RedirectToAction("Index","Home",new { fromCheckout = true, isSuccess = true});
+                return RedirectToAction("Index", "Home", new { fromCheckout = true, isSuccess = true });
             }
 
             //return View(order);

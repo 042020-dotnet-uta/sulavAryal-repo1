@@ -2,10 +2,7 @@
 using MusicShop.Domain;
 using MusicShop.Repository.DataAccess;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MusicShop.Repository
@@ -14,7 +11,7 @@ namespace MusicShop.Repository
     {
         private readonly MSDbContext _context;
 
-        public CustomerRepository(MSDbContext context):base(context)
+        public CustomerRepository(MSDbContext context) : base(context)
         {
             _context = context;
         }
@@ -32,17 +29,17 @@ namespace MusicShop.Repository
             {
                 throw;
             }
-           
+
         }
 
-       
+
         /// <summary>
         /// Validates the user if username and password match.
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-       
+
         public async Task<bool> ValidateCustomer(string username, string password)
         {
             try
@@ -60,7 +57,7 @@ namespace MusicShop.Repository
 
                 throw;
             }
-          
+
             return false;
         }
     }

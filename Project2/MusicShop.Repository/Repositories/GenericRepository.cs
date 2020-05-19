@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using MusicShop.Repository.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using MusicShop.Domain;
-using MusicShop.Repository.DataAccess;
 
 namespace MusicShop.Repository
 {
@@ -17,7 +16,7 @@ namespace MusicShop.Repository
         {
             _context = context;
         }
-        
+
         public async Task AddAsync(T entity)
         {
             _context.Set<T>().Add(entity);
@@ -32,13 +31,13 @@ namespace MusicShop.Repository
 
         public async Task DeleteAsync(int id)
         {
-           var result=  await _context.FindAsync<T>(id);
+            var result = await _context.FindAsync<T>(id);
             _context.Set<T>().Remove(result);
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
-          //  await _context.FindAsync<T>(id);
-           // _context.Remove(ent);
-           // await _context.SaveChangesAsync();
+            //  await _context.FindAsync<T>(id);
+            // _context.Remove(ent);
+            // await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
@@ -67,16 +66,16 @@ namespace MusicShop.Repository
                 _context.Entry(entity).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException dbex)
+            catch (DbUpdateException)
             {
-      
+
             }
-            
+
         }
 
         public async Task<int> SaveChangesAsync()
         {
-             return await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync();
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MusicShop.Domain
 {
@@ -26,7 +23,7 @@ namespace MusicShop.Domain
         public string City { get; set; }
         [StringLength(128)]
         [Required]
-        public string  State { get; set; }
+        public string State { get; set; }
         /// <summary>
         /// Gets or sets the zipcode of customer
         /// </summary>
