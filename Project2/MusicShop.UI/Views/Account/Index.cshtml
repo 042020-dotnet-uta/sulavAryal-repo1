@@ -307,7 +307,9 @@
         <!-- Login Form -->
         <form asp-controller="Account" asp-action="Login" method="post">
             <input type="text" id="login" class="fadeIn second" name="txtUserName" placeholder="login">
+            <input type="text" value="put customer@outlook.com in login" disabled />
             <input type="password" id="password" class="fadeIn second" name="txtPassword" placeholder="password">
+            <input type="text" value="put 'password' without quotes as password" disabled />
             <br />
             <input type="submit" class="fadeIn fourth button btn-success" value="Log In">
             <a asp-controller="Customers" class="fadeIn button fourth" asp-action="Create">Create New Customer</a>
