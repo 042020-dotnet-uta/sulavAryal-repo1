@@ -29,14 +29,15 @@ namespace MusicShop.UI.Controllers
             _productRepository = productRepository;
         }
 
-        public async Task<ViewResult> Index(int id=0)
+        public async Task<ViewResult> Index(int id=0,bool fromCheckout=false, bool isSuccess=false)
         {
-
+            ViewBag.IsSuccess = isSuccess;
+            ViewBag.fromCheckout = fromCheckout;
             ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
             var StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            
 
+            //var cartTest = ShoppingCart.GetCart();
             int? storeId = 0;
 
             if (TempData.ContainsKey("storeId"))
@@ -44,9 +45,9 @@ namespace MusicShop.UI.Controllers
               
 
                 storeId = TempData["storeId"] as int?;
-                ViewBag.StoreId = storeId;
+                ViewBag.StoreId = StoreId;
             }
-            var result = await _productRepository.GetStoreInventory(storeId);
+            var result = await _productRepository.GetStoreInventory(Convert.ToInt32(StoreId));
             var homeViewModel = new HomeViewModel
             {
                 Products = result,
@@ -60,7 +61,7 @@ namespace MusicShop.UI.Controllers
                 homeViewModel = new HomeViewModel
                 {
                     Products = result,
-                    StoreId = Convert.ToInt32(ViewBag.StoreId)
+                    StoreId = Convert.ToInt32(StoreId)
                 };
                 homeViewModel.StoreId = id;
                 return View(homeViewModel);

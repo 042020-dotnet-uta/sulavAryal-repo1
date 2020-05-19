@@ -20,7 +20,8 @@ namespace MusicShop.UI.Controllers
         private readonly IProductRepository _productRepository;
         private readonly ICustomerRepository _customerRepository;
 
-        public OrdersController(IOrderService orderService, ShoppingCart shoppingCart, IProductRepository productRepository, ICustomerRepository customerRepository)
+        public OrdersController(IOrderService orderService, ShoppingCart shoppingCart,
+            IProductRepository productRepository, ICustomerRepository customerRepository)
         {
             _orderService = orderService;
             _shoppingCart = shoppingCart;
@@ -56,7 +57,21 @@ namespace MusicShop.UI.Controllers
                 OrderDate = DateTimeOffset.Now,
             };
             var username = User.FindFirstValue(ClaimTypes.Name);
+            var inventory = await _productRepository.GetStoreInventory(storeId);
             var items = _shoppingCart.GetShoppingCartItems(username);
+            
+            foreach (var product in inventory)
+            {
+                foreach (var item in items)
+                {
+                    if (item.Product.Id == product.ProductId && item.Quantity > product.Quantity) 
+                    {
+                        ModelState.AddModelError("", $"Sorry we don't have {item.Quantity} of {item.Product.Name} right now ");
+                        _shoppingCart.ClearCart();
+                        return RedirectToAction("Index","Home", new { fromCheckout = true, isSuccess = false });
+                    }
+                }
+            }
             _shoppingCart.ShoppingCartItems = items;
             if (_shoppingCart.ShoppingCartItems.Count == 0)
             {
@@ -67,7 +82,7 @@ namespace MusicShop.UI.Controllers
             {
                 await _orderService.CreateOrder(order);
                 _shoppingCart.ClearCart();
-                return RedirectToAction("CheckoutComplete");
+                return RedirectToAction("Index","Home",new { fromCheckout = true, isSuccess = true});
             }
 
             //return View(order);

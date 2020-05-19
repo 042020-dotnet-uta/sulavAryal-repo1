@@ -45,7 +45,7 @@
                 @Html.DisplayFor(modelItem => item.ChangedDate)
             </td>
             <td>
-                <a href="/Stores/AddInventory?Id=@item.Product.Id&storeId=@ViewBag.StoreId">Add Inventory</a>
+                <a asp-controller="Stores" asp-action="AddInventory" asp-route-id="@item.Product.Id">Add Inventory</a>
             </td>
         </tr>
 }

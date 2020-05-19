@@ -40,7 +40,7 @@ namespace MusicShop.UI.Controllers
 
             var result = await _productRespository.GetStoreInventory(id);
             var store = await _context.Stores.Where(s => s.Id == id).FirstOrDefaultAsync();
-            ViewBag.StoreId = store.Id;
+            TempData["storeId"] = store.Id;
             ViewBag.Store = store.Name;
             if (result == null)
             {
@@ -49,10 +49,11 @@ namespace MusicShop.UI.Controllers
             return View("Inventory",result);
         }
 
-        public async Task<IActionResult> AddInventory(int storeId, int? id) 
+        public async Task<IActionResult> AddInventory(int? id)
         {
-            var result = await _productRespository.GetProductQuantity(storeId, id);
-            ViewBag.StoreId = storeId;
+            ViewBag.StoreId = Convert.ToInt32(TempData["storeId"]);
+            var result = await _productRespository.GetProductQuantity(ViewBag.StoreId, id);
+           
             return View("AddInventory", result);
         }
 
@@ -61,8 +62,8 @@ namespace MusicShop.UI.Controllers
         {
             var result = await _productRespository.GetProductQuantity(storeId, id);
             // you can only add into inventory from here, can't subtract. 
-            var quantityToUpdate = result.Quantity + (quantity - result.Quantity);
-            result.Quantity = quantityToUpdate;
+
+            result.Quantity = quantity + result.Quantity;
             await _productRespository.AddInventoryItems(result);
             return View("AddInventory", result);
         }
