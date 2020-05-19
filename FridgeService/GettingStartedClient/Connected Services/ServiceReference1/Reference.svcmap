@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e68c7064-6578-4768-99f6-296038f7ea79" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8000/GettingStartedLib/FridgeService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Microsoft.ServiceModel.Samples.wsdl" MetadataType="Wsdl" ID="875c6982-1837-470f-af94-cfeea99c47ef" SourceId="1" SourceUrl="http://localhost:8000/GettingStartedLib/FridgeService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="023954e1-d657-4641-9961-11210da5b58c" SourceId="1" SourceUrl="http://localhost:8000/GettingStartedLib/FridgeService/mex" />
+    <MetadataFile FileName="Microsoft.ServiceModel.Samples.xsd" MetadataType="Schema" ID="1e0ff0ad-4c9b-4f18-8cc0-3752516df852" SourceId="1" SourceUrl="http://localhost:8000/GettingStartedLib/FridgeService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="7fdbb4b9-6a75-4800-8f31-d2992427c1ca" SourceId="1" SourceUrl="http://localhost:8000/GettingStartedLib/FridgeService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="45652d9e-54b5-4aeb-abd9-8d47db20ca44" SourceId="1" SourceUrl="http://localhost:8000/GettingStartedLib/FridgeService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
