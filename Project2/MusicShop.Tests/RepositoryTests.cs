@@ -348,8 +348,6 @@ namespace MusicShop.Tests
             }
         }
 
-
-
         private void CreateOneCustomer(MSDbContext context)
         {
             var customer = new Customer

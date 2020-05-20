@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace MusicShop.UI
 {
+    /// <summary>
+    /// IOrderService that OrderSerive implements 
+    /// </summary>
     public interface IOrderService : IGenericRepository<Order>
     {
         Task<IEnumerable<Order>> GetAllOrders();

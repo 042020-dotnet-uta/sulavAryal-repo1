@@ -16,6 +16,11 @@ namespace MusicShop.Repository
             _context = context;
         }
 
+        /// <summary>
+        /// Find Customer by Id 
+        /// </summary>
+        /// <param name="id">int</param>
+        /// <returns></returns>
         public async Task<Customer> FindCustomerById(int? id)
         {
             try

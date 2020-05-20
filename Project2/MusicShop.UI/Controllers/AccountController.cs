@@ -26,6 +26,10 @@ namespace MusicShop.UI.Controllers
 
         public ILogger<CustomerRepository> _logger { get; }
 
+        /// <summary>
+        /// Index method returns the Index view. 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             return View();
@@ -37,6 +41,12 @@ namespace MusicShop.UI.Controllers
 
         }
 
+        /// <summary>
+        /// Checks for username, password and sets cookies 
+        /// </summary>
+        /// <param name="txtUserName"></param>
+        /// <param name="txtPassword"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Login(string txtUserName, string txtPassword)
         {
@@ -63,6 +73,10 @@ namespace MusicShop.UI.Controllers
             return View("Index");
         }
 
+        /// <summary>
+        /// Gets invoked when user logs out. 
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();

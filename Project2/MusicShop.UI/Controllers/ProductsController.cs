@@ -23,7 +23,10 @@ namespace MusicShop.UI.Controllers
             _customerRepository = customerRepository;
         }
 
-
+        /// <summary>
+        /// Serves up Product Contorllers' index view with appropriate model. 
+        /// </summary>
+        /// <returns></returns>
         // GET: Products
         public async Task<IActionResult> Index()
         {
@@ -39,6 +42,11 @@ namespace MusicShop.UI.Controllers
             return View(result);
         }
 
+        /// <summary>
+        /// Shows details about the product
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -57,7 +65,10 @@ namespace MusicShop.UI.Controllers
             return View(product);
         }
 
-        // GET: Products/Create
+        /// <summary>
+        /// View to go to, to create product
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
             return View();
@@ -66,6 +77,11 @@ namespace MusicShop.UI.Controllers
         // POST: Products/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// This is where you create a new product from.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,ProductCode,Price")] Product product)
@@ -80,6 +96,11 @@ namespace MusicShop.UI.Controllers
             return View(product);
         }
 
+        /// <summary>
+        /// This is where you reach if you try to create a new product first.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -99,6 +120,12 @@ namespace MusicShop.UI.Controllers
         // POST: Products/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// This is where product can get its details updated. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="product"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,ProductCode,Price")] Product product)
@@ -134,6 +161,11 @@ namespace MusicShop.UI.Controllers
         }
 
         // GET: Products/Delete/5
+        /// <summary>
+        /// This is where product gets deleted. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -152,6 +184,11 @@ namespace MusicShop.UI.Controllers
         }
 
         // POST: Products/Delete/5
+        /// <summary>
+        /// This is where request comes to when user confirms product deletion. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -162,6 +199,11 @@ namespace MusicShop.UI.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// This a check to see if product exists. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool ProductExists(int id)
         {
             return _context.Products.Any(e => e.Id == id);

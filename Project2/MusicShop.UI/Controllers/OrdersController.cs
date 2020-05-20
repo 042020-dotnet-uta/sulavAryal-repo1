@@ -25,7 +25,11 @@ namespace MusicShop.UI.Controllers
         }
 
 
-        // GET: Orders
+        /// <summary>
+        /// Serves Order Controller view page with model. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Index(int? id)
         {
             if (id == null)
@@ -43,6 +47,10 @@ namespace MusicShop.UI.Controllers
             return View(orders);
         }
 
+        /// <summary>
+        /// Displays product list
+        /// </summary>
+        /// <returns></returns>
         public async Task<ViewResult> ProductList()
         {
             var products = await _productRepository.GetAllAsync();
@@ -52,6 +60,11 @@ namespace MusicShop.UI.Controllers
             return View(products);
         }
 
+        /// <summary>
+        /// This is where customers reach when they buy their orders from cart. 
+        /// </summary>
+        /// <param name="storeId"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Checkout(int storeId)
         {
             var custResult = await _customerRepository.FindSingleAsync(c => c.Email == User.FindFirstValue(ClaimTypes.Name));
@@ -95,6 +108,11 @@ namespace MusicShop.UI.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        /// <summary>
+        /// Lists details about Order
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id) 
         {
             if (id == null) 
@@ -113,6 +131,11 @@ namespace MusicShop.UI.Controllers
             return View(orderDetailVM);
         }
 
+        /// <summary>
+        /// Lists details related to a particular customer. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> CustomerOrder(int? id) 
         {
             if (id == null)

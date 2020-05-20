@@ -18,6 +18,9 @@ namespace MusicShop.UI
             _context = context;
         }
         public string ShoppingCartId { get; set; }
+        /// <summary>
+        /// This is where shoppingcartitems gets stored temporarily
+        /// </summary>
         public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         /// <summary>

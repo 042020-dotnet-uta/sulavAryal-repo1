@@ -17,6 +17,10 @@ namespace MusicShop.UI.Controllers
             _productRepository = productRepository;
             _shoppingCart = shoppingCart;
         }
+        /// <summary>
+        /// Serves up a page that shows shopping cart. 
+        /// </summary>
+        /// <returns></returns>
         public ViewResult Index()
         {
             int? storeId = 0;
@@ -42,6 +46,12 @@ namespace MusicShop.UI.Controllers
             return View(shoppingCartVM);
         }
 
+        /// <summary>
+        /// Adds items to the shoppincart. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="storeId"></param>
+        /// <returns></returns>
         public async Task<RedirectToActionResult> AddToShoppingCart(int id, int storeId = 0)
         {
             var username = User.FindFirstValue(ClaimTypes.Name);
@@ -57,6 +67,11 @@ namespace MusicShop.UI.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Removes items form the shopping cart if user chooses to. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<RedirectToActionResult> RemoveFromShoppingCart(int id)
         {
             var selectedProduct = await _productRepository.FindSingleAsync(p => p.Id == id);

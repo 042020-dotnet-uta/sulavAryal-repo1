@@ -17,6 +17,11 @@ namespace MusicShop.Repository
             _context = context;
         }
 
+        /// <summary>
+        /// Adds inventory to the database. 
+        /// </summary>
+        /// <param name="inventoryItemToUpdate"></param>
+        /// <returns></returns>
         public async Task AddInventoryItems(InventoryItem inventoryItemToUpdate)
         {
             try
@@ -30,6 +35,12 @@ namespace MusicShop.Repository
             }
         }
 
+        /// <summary>
+        /// Gets Product Quantity from the database
+        /// </summary>
+        /// <param name="storeId"></param>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public async Task<InventoryItem> GetProductQuantity(int storeId, int? Id)
         {
             try
@@ -46,6 +57,11 @@ namespace MusicShop.Repository
             }
         }
 
+        /// <summary>
+        /// Gets list of inventory based on storeid
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<InventoryItem>> GetStoreInventory(int? id)
         {
             try

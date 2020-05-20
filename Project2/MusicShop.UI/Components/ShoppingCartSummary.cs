@@ -16,6 +16,10 @@ namespace MusicShop.UI.Components
 			_httpContextAccessor = httpContextAccessor;
 		}
 
+		/// <summary>
+		/// Shopping cart view component
+		/// </summary>
+		/// <returns></returns>
 		public IViewComponentResult Invoke()
 		{
 

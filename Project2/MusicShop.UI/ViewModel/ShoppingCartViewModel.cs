@@ -10,6 +10,9 @@
         /// Total Value for the shopping cart.
         /// </summary>
         public decimal ShoppingCartTotal { get; set; }
+        /// <summary>
+        /// Gets, Sets StoreId
+        /// </summary>
         public int? StoreId { get; set; }
     }
 }

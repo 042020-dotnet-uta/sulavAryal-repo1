@@ -21,6 +21,12 @@ namespace MusicShop.UI.Controllers
             _customerRepository = customerRepository;
         }
 
+        /// <summary>
+        /// Directs to Customer index page with model
+        /// </summary>
+        /// <param name="SearchString"></param>
+        /// <param name="isSuccess"></param>
+        /// <returns></returns>
         [Authorize]
         public async Task<IActionResult> Index(string SearchString, bool isSuccess = false)
         {
@@ -39,6 +45,10 @@ namespace MusicShop.UI.Controllers
             return View(customers);
         }
 
+        /// <summary>
+        /// Serves Create View 
+        /// </summary>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpGet]
         public IActionResult Create()
@@ -47,6 +57,13 @@ namespace MusicShop.UI.Controllers
         }
 
 
+        /// <summary>
+        /// Creates a Customer using the posted data. 
+        /// </summary>
+        /// <param name="rePassword"></param>
+        /// <param name="customer"></param>
+        /// <param name="customerAddress"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -98,7 +115,11 @@ namespace MusicShop.UI.Controllers
         }
 
 
-        // GET: Customers/Details/5
+        /// <summary>
+        /// Displays the details about user
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -117,7 +138,11 @@ namespace MusicShop.UI.Controllers
             return View(customer);
         }
 
-        // GET: Customers/Edit/5
+        /// <summary>
+        /// Get view for Edit 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -138,6 +163,13 @@ namespace MusicShop.UI.Controllers
         // POST: Customers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Uses the posted data to edit customer details. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="customer"></param>
+        /// <param name="customerAddress"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -158,14 +190,7 @@ namespace MusicShop.UI.Controllers
                 }
                 catch (Exception)
                 {
-                    //if (!CustomerExists(customer.Id))
-                    //{
-                    //    return NotFound();
-                    //}
-                    //else
-                    //{
-                    //    throw;
-                    //}
+
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -173,7 +198,11 @@ namespace MusicShop.UI.Controllers
         }
 
 
-        // GET: Customers/Delete/5
+       /// <summary>
+       /// Deletes the customer using the id passed in.
+       /// </summary>
+       /// <param name="id"></param>
+       /// <returns></returns>
         [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -191,7 +220,12 @@ namespace MusicShop.UI.Controllers
             return View(customer);
         }
 
-        // POST: Customers/Delete/5
+        /// <summary>
+        /// Confirms with user about delete before actually deleting it from
+        /// database. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

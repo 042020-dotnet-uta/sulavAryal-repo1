@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 
 namespace MusicShop.Repository
 {
+    /// <summary>
+    /// IGenericRepository for Type T
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IGenericRepository<T> where T : class
     {
         Task AddAsync(T entity);

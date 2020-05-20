@@ -23,6 +23,11 @@ namespace MusicShop.UI
             _httpContextAccessor = httpContextAccessor;
         }
 
+        /// <summary>
+        /// Creates order
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public async Task CreateOrder(Order order)
         {
             try
@@ -70,6 +75,10 @@ namespace MusicShop.UI
 
         }
 
+        /// <summary>
+        /// Gets all the orders and passes it to the controller
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<Order>> GetAllOrders()
         {
             return await _context.Orders
@@ -103,7 +112,11 @@ namespace MusicShop.UI
             }
            
         }
-
+        /// <summary>
+        /// Gets orders by Customer and passes it to the controller 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Order>> GetOrdersByCustomer(int? id)
         {
             if (id == null)
@@ -127,6 +140,11 @@ namespace MusicShop.UI
             }
         }
 
+        /// <summary>
+        /// Gets orders by store
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Order>> GetOrdersByStore(int? id)
         {
             if (id == null)

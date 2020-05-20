@@ -29,6 +29,14 @@ namespace MusicShop.UI.Controllers
             _productRepository = productRepository;
         }
 
+        /// <summary>
+        /// Serves Index Home controllers Index page with model passed in.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="fromCheckout"></param>
+        /// <param name="isSuccess"></param>
+        /// <param name="emptyCart"></param>
+        /// <returns></returns>
         public async Task<ViewResult> Index(int id = 0, 
             bool fromCheckout = false, bool isSuccess = false, bool emptyCart = false)
         {
@@ -71,6 +79,10 @@ namespace MusicShop.UI.Controllers
             return View(homeViewModel);
         }
 
+        /// <summary>
+        /// This is where customers come to choose store location. 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult ChooseStore()
         {
             ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
@@ -78,6 +90,11 @@ namespace MusicShop.UI.Controllers
             return View("ChooseStore");
         }
 
+        /// <summary>
+        /// Customer choosen stored location is processed here.
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChooseStore(IFormCollection form)

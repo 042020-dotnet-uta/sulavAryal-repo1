@@ -20,6 +20,10 @@ namespace MusicShop.Tests
         private readonly Mock<ICustomerRepository> _customerRepoMock = new Mock<ICustomerRepository>();
         private readonly Mock<IGenericRepository<Customer>> _genericRepoMock = new Mock<IGenericRepository<Customer>>();
 
+        /// <summary>
+        /// Returns Customer if they exit
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task FindCustomerById_ShouldReturnCustomer_WhenCustomerExits()
         {
@@ -52,7 +56,10 @@ namespace MusicShop.Tests
             }
 
         }
-
+        /// <summary>
+        /// Check if adding customer to database works
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task AddsCustomerToDb()
         {
@@ -85,6 +92,10 @@ namespace MusicShop.Tests
             }
         }
 
+        /// <summary>
+        /// Checks if deleting Customer from database works
+        /// </summary>
+        /// <returns></returns>
 
         [Fact]
         public async Task DeletesCustomerFromDb()
@@ -116,6 +127,10 @@ namespace MusicShop.Tests
             }
         }
 
+        /// <summary>
+        /// Checks if page redirects as intended.
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task DeleteConfirmedRedirectsToIndex()
         {

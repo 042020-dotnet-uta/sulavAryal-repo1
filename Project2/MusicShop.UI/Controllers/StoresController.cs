@@ -25,6 +25,10 @@ namespace MusicShop.UI.Controllers
         }
 
         // GET: Stores
+        /// <summary>
+        /// Index view of Stores controller
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
             ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
@@ -33,6 +37,12 @@ namespace MusicShop.UI.Controllers
                 .ToListAsync());
         }
 
+        /// <summary>
+        /// Shows store wise inventory
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="isSuccess"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Inventory(int? id, bool isSuccess = false)
         {
 
@@ -74,6 +84,11 @@ namespace MusicShop.UI.Controllers
             return View("Inventory", storeInVM);
         }
 
+        /// <summary>
+        /// get view for add inventory 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> AddInventory(int? id)
         {
             ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -83,7 +98,13 @@ namespace MusicShop.UI.Controllers
             return View("AddInventory", result);
         }
 
-
+        /// <summary>
+        /// action method to handle post request to modify inventory.
+        /// </summary>
+        /// <param name="storeId"></param>
+        /// <param name="id"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
         public async Task<IActionResult> UpdateInventory(int storeId, int? id, int quantity)
         {
             var result = await _productRespository.GetProductQuantity(storeId, id);
@@ -102,7 +123,11 @@ namespace MusicShop.UI.Controllers
             return View("Inventory", storeInVM);
         }
 
-
+        /// <summary>
+        /// Checks to see if store exists. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool StoreExists(int id)
         {
             return _context.Stores.Any(e => e.Id == id);

@@ -16,49 +16,129 @@ namespace MusicShop.Repository
         {
             _context = context;
         }
-
+        /// <summary>
+        /// Add Entity of type T to the database.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public async Task AddAsync(T entity)
         {
-            _context.Set<T>().Add(entity);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Set<T>().Add(entity);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+                
+            }
+         
         }
 
+        /// <summary>
+        /// Gets all the record from database
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            return await _context.Set<T>()
-               .ToListAsync();
-        }
+            try
+            {
+                return await _context.Set<T>()
+             .ToListAsync();
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+          
+        }
+        /// <summary>
+        /// Deletes record from database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task DeleteAsync(int id)
         {
-            var result = await _context.FindAsync<T>(id);
-            _context.Set<T>().Remove(result);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var result = await _context.FindAsync<T>(id);
+                _context.Set<T>().Remove(result);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
 
-            //  await _context.FindAsync<T>(id);
-            // _context.Remove(ent);
-            // await _context.SaveChangesAsync();
+                throw;
+            }
+        
         }
-
+        /// <summary>
+        /// Gets list of records from database based on predicate
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
         {
-            return await _context.Set<T>()
-               .AsQueryable()
-               .Where(predicate)
-               .ToListAsync();
-        }
+            try
+            {
+                return await _context.Set<T>()
+            .AsQueryable()
+            .Where(predicate)
+            .ToListAsync();
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+         
+        }
+        /// <summary>
+        /// Gets list of records from database based on predicate
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<T>> FindByAsync(Expression<Func<T, bool>> predicate)
         {
-            return await _context.Set<T>().Where(predicate).ToListAsync();
+            try
+            {
+                return await _context.Set<T>().Where(predicate).ToListAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
 
+        /// <summary>
+        /// Gets single record from database
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public async Task<T> FindSingleAsync(Expression<Func<T, bool>> predicate)
         {
-            return await _context.Set<T>().FirstOrDefaultAsync(predicate);
+            try
+            {
+                return await _context.Set<T>().FirstOrDefaultAsync(predicate);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
 
-
+        /// <summary>
+        /// Updates changes to database
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public async Task UpdateAsync(T entity)
         {
             try
@@ -73,9 +153,22 @@ namespace MusicShop.Repository
 
         }
 
+        /// <summary>
+        /// Saves changes to database
+        /// </summary>
+        /// <returns></returns>
         public async Task<int> SaveChangesAsync()
         {
-            return await _context.SaveChangesAsync();
+            try
+            {
+                return await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
     }
 }
