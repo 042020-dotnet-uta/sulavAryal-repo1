@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using MusicShop.Repository;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -12,10 +13,14 @@ namespace MusicShop.UI.Controllers
     {
         private readonly ICustomerRepository _customerRepository;
 
-        public AccountController(ICustomerRepository customerRepository)
+        public AccountController(ICustomerRepository customerRepository, ILogger<CustomerRepository> logger)
         {
             _customerRepository = customerRepository;
+            _logger = logger;
         }
+
+        public ILogger<CustomerRepository> _logger { get; }
+
         public IActionResult Index()
         {
             return View();
@@ -49,6 +54,7 @@ namespace MusicShop.UI.Controllers
                 ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
                 return RedirectToAction("ChooseStore", "Home");
             }
+            _logger.LogInformation("Login attempt unsuccessful");
             return View("Index");
         }
 

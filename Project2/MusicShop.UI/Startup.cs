@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MusicShop.Repository;
 using MusicShop.Repository.DataAccess;
+using Serilog;
 using System;
 
 namespace MusicShop.UI
@@ -44,6 +45,8 @@ namespace MusicShop.UI
 
             services.AddControllersWithViews();
 
+            
+
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
 
@@ -74,6 +77,7 @@ namespace MusicShop.UI
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSerilogRequestLogging();
             app.UseRouting();
 
             app.UseAuthentication();

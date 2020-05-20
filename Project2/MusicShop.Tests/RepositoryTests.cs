@@ -53,7 +53,7 @@ namespace MusicShop.Tests
         }
 
         [Fact]
-        public async System.Threading.Tasks.Task AddsCustomerToDbAsync()
+        public async Task AddsCustomerToDbAsync()
         {
             //Arrange
             var options = InMemoryDb("AddsCustomer");
@@ -71,7 +71,7 @@ namespace MusicShop.Tests
             {
                 var customerRepo = new CustomerRepository(context);
                 context.Add(cutomerInfo1);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
 
 
                 Assert.Equal(11, cutomerInfo1.Id);
@@ -121,7 +121,7 @@ namespace MusicShop.Tests
         }
 
         [Fact]
-        public async void GetsAllLocations()
+        public async Task GetsAllLocations()
         {
             //Arrange
             var options = InMemoryDb("GetsAllLocations");
@@ -144,7 +144,7 @@ namespace MusicShop.Tests
                     Name = "Washinton"
                 };
                 context.Add(store);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
             //Assert
             using (var context = new MSDbContext(options))
@@ -313,7 +313,7 @@ namespace MusicShop.Tests
                 var orderRepo = new OrderService(context, shoppingCartRepo, contextAccessor);
                 var orders = await orderRepo.FindAsync(o => o.CustomerId == 1);
 
-                Assert.Equal(0, orders.Count());
+                Assert.Empty(orders);
             }
         }
 
