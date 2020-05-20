@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace MusicShop.Domain
 {
@@ -14,6 +12,7 @@ namespace MusicShop.Domain
         {
             // This has to be initialized to cover for the cases where, you may want to use empty Store
             // with no InventoryItem. 
+            this.Products = new HashSet<Product>();
             this.Inventory = new HashSet<InventoryItem>();
         }
         /// <summary>
@@ -31,6 +30,7 @@ namespace MusicShop.Domain
         /// InventoryItem and store.
         /// as a store can have many InventoryItems. 
         /// </summary>
+        public ICollection<Product> Products { get; set; }
         public ICollection<InventoryItem> Inventory { get; set; }
     }
 }

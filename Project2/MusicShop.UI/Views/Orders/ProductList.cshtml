@@ -1,0 +1,17 @@
+﻿@model IEnumerable<MusicShop.Domain.Product>
+
+@{
+    ViewData["Title"] = "ProductList";
+}
+
+<h1>ProductList</h1>
+<h2>All Products are shown here.</h2>
+
+@{
+
+    foreach (var product in Model) 
+    {
+        <div>Product Name: @product.Name</div>
+        <div>Price: @product.Price.ToString("c")</div>
+    }
+ }

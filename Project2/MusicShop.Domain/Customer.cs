@@ -12,26 +12,36 @@ namespace MusicShop.Domain
         /// Gets of sets the first name of customer
         /// </summary>
         [StringLength(128)]
+        [Required]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
         /// <summary>
         /// Gets of sets the last name of customer
         /// </summary>
         [StringLength(128)]
+        [Required]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
         /// <summary>
         /// Gets of sets the email of customer
         /// </summary>
         [StringLength(128)]
+        [EmailAddress]
+        [Required]
         public string Email { get; set; }
         /// <summary>
         /// Gets of sets the phone number of customer
         /// </summary>
         [StringLength(128)]
+        [Phone]
+        [Required]
         public string PhoneNo { get; set; }
         /// <summary>
         /// Gets of sets the password of customer
         /// </summary>
         [StringLength(128)]
+        [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         /// <summary>
         /// Gets of sets the customer Address of customer
@@ -41,12 +51,8 @@ namespace MusicShop.Domain
         /// <summary>
         /// Gets of sets the user type of customer, foreign key.
         /// </summary>
-       
-        public int UserTypeId { get; set; }
-        /// <summary>
-        /// Gets or sets Navigational property of UserType
-        /// </summary>
-        public UserType UserType { get; set; }
+
+        public int? UserTypeId { get; set; }
 
         /// <summary>
         /// Overrides the ToString method to display information about the Customer

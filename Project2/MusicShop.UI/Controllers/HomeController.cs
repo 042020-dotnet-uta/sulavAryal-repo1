@@ -1,33 +1,148 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MusicShop.UI.Models;
-using System.Diagnostics;
+using MusicShop.Repository;
+using MusicShop.Repository.DataAccess;
+using MusicShop.UI.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace MusicShop.UI.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly MSDbContext _context;
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IProductRepository _productRepository;
+        public HomeController(MSDbContext context, ILogger<HomeController> logger,
+            IProductRepository productRepository)
         {
+            _context = context;
             _logger = logger;
+            _productRepository = productRepository;
         }
 
-        public IActionResult Index()
+        /// <summary>
+        /// Serves Index Home controllers Index page with model passed in.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="fromCheckout"></param>
+        /// <param name="isSuccess"></param>
+        /// <param name="emptyCart"></param>
+        /// <returns></returns>
+        public async Task<ViewResult> Index(int id = 0, 
+            bool fromCheckout = false, bool isSuccess = false, bool emptyCart = false)
         {
-            return View();
+            ViewBag.IsSuccess = isSuccess;
+            ViewBag.fromCheckout = fromCheckout;
+            ViewBag.EmptyCart = emptyCart;
+            ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+            var StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            //var cartTest = ShoppingCart.GetCart();
+            int? storeId = 0;
+
+            if (TempData.ContainsKey("storeId"))
+            {
+
+
+                storeId = TempData["storeId"] as int?;
+                ViewBag.StoreId = StoreId;
+            }
+            var result = await _productRepository.GetStoreInventory(Convert.ToInt32(StoreId));
+            var homeViewModel = new HomeViewModel
+            {
+                Products = result,
+                StoreId = Convert.ToInt32(ViewBag.StoreId)
+            };
+            if (id != 0)
+            {
+                ViewBag.StoreId = id;
+
+                result = await _productRepository.GetStoreInventory(id);
+                homeViewModel = new HomeViewModel
+                {
+                    Products = result,
+                    StoreId = Convert.ToInt32(StoreId)
+                };
+                homeViewModel.StoreId = id;
+                return View(homeViewModel);
+            }
+            return View(homeViewModel);
         }
 
-        public IActionResult Privacy()
+        /// <summary>
+        /// This is where customers come to choose store location. 
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult ChooseStore()
         {
-            return View();
+            ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+            ViewData["StoreId"] = new SelectList(_context.Stores, "Id", "Name");
+            return View("ChooseStore");
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        /// <summary>
+        /// Customer choosen stored location is processed here.
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChooseStore(IFormCollection form)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var customer = User.FindFirstValue(ClaimTypes.Name);
+            var formStoreId = form["StoreId"][1];
+            if (string.IsNullOrEmpty(customer) || string.IsNullOrEmpty(formStoreId)) 
+            {
+                return RedirectToAction("Logout","Account");
+            }
+            if (form["StoreId"][1] != "Choose a location")
+            {
+                var result = await _productRepository.GetStoreInventory(Convert.ToInt32(form["StoreId"][1]));
+                var store = await _context.Stores.Where(s => s.Id == Convert.ToInt32(form["StoreId"][1])).FirstOrDefaultAsync();
+
+                #region adds storeId to the cookie
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, customer),
+                    new Claim(ClaimTypes.NameIdentifier, form["StoreId"][1])
+                };
+                if (claims == null) 
+                {
+                    NotFound();
+                }
+                var identity = new ClaimsIdentity(
+                    claims, CookieAuthenticationDefaults.AuthenticationScheme
+                );
+                var principle = new ClaimsPrincipal(identity);
+                var props = new AuthenticationProperties();
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principle, props).Wait();
+
+                #endregion
+                ViewBag.StoreId = store.Id;
+                ViewBag.Store = store.Name;
+                if (result == null)
+                {
+                    return NotFound();
+                }
+
+                TempData["storeId"] = Convert.ToInt32(form["StoreId"][1]);
+                return RedirectToAction("Index");
+            }
+
+            ViewData["StoreId"] = new SelectList(_context.Stores, "Id", "Name");
+            ModelState.AddModelError("", "Choose a store location");
+            return View("ChooseStore");
         }
+
     }
 }

@@ -1,0 +1,47 @@
+﻿@model MusicShop.Domain.InventoryItem
+
+
+<h4>Add Inventory into Store</h4>
+<hr />
+
+<form asp-action="UpdateInventory">
+    <div class="row">
+        <div class="col-md-4">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="StoreId" />
+
+
+            <div class="form-group">
+                <label asp-for="Store.Name" class="control-label"></label>
+                <input asp-for="Store.Name" class="form-control" disabled>
+                <span asp-validation-for="Store.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" disabled>
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" disabled>
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label">Add Quantity</label>
+                <input name="Quantity" class="form-control" type="number">
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Inventory" asp-route-id="@ViewBag.StoreId">Back to List</a>
+    </div>
+</form>
+
