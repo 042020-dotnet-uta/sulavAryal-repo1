@@ -32,19 +32,24 @@ namespace MusicShop.UI.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Index(int? id)
         {
+
             if (id == null)
             {
-                return NotFound();
+                ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+                var orders = await _orderService.GetAllOrders();
+                return View(orders);
             }
-            else if(id.HasValue)
+            else if (id.HasValue)
             {
                 ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+                ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var storeOrders = await _orderService.GetOrdersByStore(id);
                 return View(storeOrders);
             }
             ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
-            var orders = await _orderService.GetAllOrders();
-            return View(orders);
+            var orders1 = await _orderService.GetAllOrders();
+            return View(orders1);
+
         }
 
         /// <summary>
@@ -53,6 +58,8 @@ namespace MusicShop.UI.Controllers
         /// <returns></returns>
         public async Task<ViewResult> ProductList()
         {
+            ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+            ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var products = await _productRepository.GetAllAsync();
             ProductListViewModel pvm = new ProductListViewModel();
             pvm.Products = await _productRepository.GetAllAsync();
@@ -99,6 +106,8 @@ namespace MusicShop.UI.Controllers
 
             if (ModelState.IsValid)
             {
+                ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+                ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 await _orderService.CreateOrder(order);
                 _shoppingCart.ClearCart();
                 return RedirectToAction("Index", "Home", new { fromCheckout = true, isSuccess = true });
@@ -120,6 +129,8 @@ namespace MusicShop.UI.Controllers
                 return NotFound();
             }
             // bring in orders and order line items
+            ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+            ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var order = await _orderService.GetOrderById(id);
             var products = await _productRepository.GetAllAsync();
             var orderDetailVM = new OrderDetailViewModel 
@@ -144,6 +155,8 @@ namespace MusicShop.UI.Controllers
             }
             else if (id.HasValue)
             {
+                ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+                ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var storeOrders = await _orderService.GetOrdersByCustomer(id);
                 return View("Index",storeOrders);
             }

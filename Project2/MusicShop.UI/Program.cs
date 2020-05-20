@@ -9,6 +9,7 @@ namespace MusicShop.UI
     {
         public static void Main(string[] args)
         {
+            // Adds Serilog
             Log.Logger = new LoggerConfiguration()
             .Enrich.FromLogContext()
             .WriteTo.Console()

@@ -54,7 +54,8 @@ namespace MusicShop.UI.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+            ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var product = await _context.Products
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
@@ -88,7 +89,8 @@ namespace MusicShop.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+                ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -108,7 +110,8 @@ namespace MusicShop.UI.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+            ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var product = await _context.Products.FindAsync(id);
             if (product == null)
             {
@@ -139,6 +142,8 @@ namespace MusicShop.UI.Controllers
             {
                 try
                 {
+                    ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+                    ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                     _context.Update(product);
                     await _context.SaveChangesAsync();
                    
@@ -172,7 +177,8 @@ namespace MusicShop.UI.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+            ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var product = await _context.Products
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
@@ -193,6 +199,8 @@ namespace MusicShop.UI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+            ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var product = await _context.Products.FindAsync(id);
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
@@ -206,6 +214,8 @@ namespace MusicShop.UI.Controllers
         /// <returns></returns>
         private bool ProductExists(int id)
         {
+            ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
+            ViewBag.StoreId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return _context.Products.Any(e => e.Id == id);
         }
 

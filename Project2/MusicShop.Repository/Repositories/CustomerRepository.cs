@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using MusicShop.Domain;
 using MusicShop.Repository.DataAccess;
 using System;
@@ -11,10 +12,13 @@ namespace MusicShop.Repository
     {
         private readonly MSDbContext _context;
 
-        public CustomerRepository(MSDbContext context) : base(context)
+        public CustomerRepository(MSDbContext context, ILogger<ICustomerRepository> logger) : base(context)
         {
             _context = context;
+            Logger = logger;
         }
+
+        public ILogger<ICustomerRepository> Logger { get; }
 
         /// <summary>
         /// Find Customer by Id 
@@ -32,7 +36,8 @@ namespace MusicShop.Repository
             }
             catch (Exception)
             {
-                throw;
+                Logger.LogInformation("Customer not found");
+                return null;
             }
 
         }
