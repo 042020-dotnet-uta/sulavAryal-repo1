@@ -19,7 +19,6 @@ namespace MusicShop.UI.Controllers
         public CustomersController(ICustomerRepository customerRepository)
         {
             _customerRepository = customerRepository;
-
         }
 
         [Authorize]

@@ -9,11 +9,23 @@ namespace MusicShop.Repository.DataAccess
         {
 
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                //optionsBuilder.UseSqlServer(@"");
+                //("Data Source=.");
+                optionsBuilder.UseSqlServer("Data Source=.");
+                optionsBuilder.EnableSensitiveDataLogging();
+               
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Seed();
         }
+
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
