@@ -33,12 +33,12 @@ namespace MusicShop.UI
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-     Host.CreateDefaultBuilder(args)
-         .UseSerilog() // <- Adds serilog
-         .ConfigureWebHostDefaults(webBuilder =>
-         {
-             webBuilder.UseStartup<Startup>();
-         });
+                Host.CreateDefaultBuilder(args)
+                 .UseSerilog() // <- Adds serilog
+                 .ConfigureWebHostDefaults(webBuilder =>
+                 {
+                     webBuilder.UseStartup<Startup>();
+                 });
 
     }
 }

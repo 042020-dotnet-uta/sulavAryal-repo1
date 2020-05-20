@@ -27,12 +27,15 @@ namespace MusicShop.UI.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
+            
             ViewBag.UserName = User.FindFirstValue(ClaimTypes.Name);
-            var result = await _context.Inventory
-                .Include(i => i.Product)
-                .Include(i => i.Store)
-                .AsNoTracking()
-                .ToListAsync();
+            if (TempData["isSuccess"] != null)
+            {
+                bool isSuccess = (bool)TempData["isSuccess"];
+                ViewBag.isSuccess = isSuccess == true ? true: false ;
+            }
+           
+            var result = await _productRepository.GetAllAsync();
             return View(result);
         }
 
@@ -111,6 +114,7 @@ namespace MusicShop.UI.Controllers
                 {
                     _context.Update(product);
                     await _context.SaveChangesAsync();
+                   
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -123,6 +127,7 @@ namespace MusicShop.UI.Controllers
                         throw;
                     }
                 }
+               
                 return RedirectToAction(nameof(Index));
             }
             return View(product);

@@ -13,6 +13,11 @@ namespace MusicShop.UI.Controllers
     {
         private readonly ICustomerRepository _customerRepository;
 
+        /// <summary>
+        /// Injects dependencies through DI container into this constructor
+        /// </summary>
+        /// <param name="customerRepository"></param>
+        /// <param name="logger"></param>
         public AccountController(ICustomerRepository customerRepository, ILogger<CustomerRepository> logger)
         {
             _customerRepository = customerRepository;
@@ -61,6 +66,7 @@ namespace MusicShop.UI.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
+            _logger.LogInformation($"Bye bye {User.FindFirstValue(ClaimTypes.Name)}");
             return RedirectToAction("Index");
         }
 
