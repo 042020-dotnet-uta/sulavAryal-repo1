@@ -9,13 +9,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace MusicShop.Tests
 {
     public class RepositoryTests
     {
-       
+
         [Fact]
         public async void GetsCustomerById()
         {
@@ -78,7 +79,7 @@ namespace MusicShop.Tests
                 Assert.Equal(lName, cutomerInfo1.LastName);
                 Assert.Equal(email, cutomerInfo1.Email);
             }
-          
+
         }
 
 
@@ -88,7 +89,7 @@ namespace MusicShop.Tests
             //Arrange
             var options = InMemoryDb("GetsCustomerByEmail");
             string fName = "Person";
-            string lName = "withLastName"; 
+            string lName = "withLastName";
             string email = "person@gmail.com";
             int id = 3;
 
@@ -120,7 +121,7 @@ namespace MusicShop.Tests
         }
 
         [Fact]
-        public async  void GetsAllLocations()
+        public async void GetsAllLocations()
         {
             //Arrange
             var options = InMemoryDb("GetsAllLocations");
@@ -148,7 +149,7 @@ namespace MusicShop.Tests
             //Assert
             using (var context = new MSDbContext(options))
             {
-                var stores = context.Stores.Select(x=>x);
+                var stores = context.Stores.Select(x => x);
                 //var stores = await storeRepo.();
 
                 Assert.Equal(4, stores.Count());
@@ -189,7 +190,7 @@ namespace MusicShop.Tests
             }
         }
 
-    
+
 
         [Fact]
         public async void GetsAllOrdersForLocation()
@@ -256,7 +257,7 @@ namespace MusicShop.Tests
                 var orderRepo = new OrderService(context, shoppingCartRepo, contextAccessor);
                 var orders = await orderRepo.FindAsync(o => o.StoreId == 1 && o.Id == 2);
 
-                Assert.Equal(0, orders.Select(i=>i.Id).FirstOrDefault());
+                Assert.Equal(0, orders.Select(i => i.Id).FirstOrDefault());
             }
         }
 
@@ -316,6 +317,37 @@ namespace MusicShop.Tests
             }
         }
 
+        [Fact]
+        public void AddsStoreToDbTest()
+        {
+            //Arrange
+            var options = new DbContextOptionsBuilder<MSDbContext>()
+                .UseInMemoryDatabase(databaseName: "AddsStoreToDbTest")
+                .Options;
+
+            //Act
+            using (var db = new MSDbContext(options))
+            {
+                Store location = new Store
+                {
+                    Name = "Spokane"
+                };
+
+                db.Add(location);
+                db.SaveChanges();
+            }
+
+            //Assert
+            using (var context = new MSDbContext(options))
+            {
+                Assert.Equal(1, context.Stores.Count());
+
+                var store2 = context.Stores.Where(s => s.Id == 1).FirstOrDefault();
+                Assert.Equal(1, store2.Id);
+                Assert.Equal("Spokane", store2.Name);
+            }
+        }
+
 
 
         private void CreateOneCustomer(MSDbContext context)
@@ -346,6 +378,269 @@ namespace MusicShop.Tests
             };
             context.Add(product);
             context.SaveChanges();
+        }
+
+        [Fact]
+        public void AddsProductToDbTest()
+        {
+            //Arrange
+            var options = new DbContextOptionsBuilder<MSDbContext>()
+                .UseInMemoryDatabase(databaseName: "AddsProductToDbTest")
+                .Options;
+
+            //Act
+            using (var db = new MSDbContext(options))
+            {
+                Product sitar = new Product
+                {
+                    Id = 17,
+                    Name = "sitar",
+                    Price = 100M
+                };
+
+                db.Add(sitar);
+                db.SaveChanges();
+            }
+
+            //Assert
+            using (var context = new MSDbContext(options))
+            {
+                Assert.Equal(1, context.Products.Count());
+
+                var product1 = context.Products.Where(p => p.Id == 17).FirstOrDefault();
+                Assert.Equal(17, product1.Id);
+                Assert.Equal("sitar", product1.Name);
+            }
+        }
+
+        [Fact]
+        public async Task DeletesProductFromDb()
+        {
+
+            //Arrange - create an object to configure your inmemory DB.
+            var options = new DbContextOptionsBuilder<MSDbContext>()
+                .UseInMemoryDatabase(databaseName: "DeletesProductFromDb")
+                .Options;
+
+
+            //Act - send in the configure object to the DbContext constructor to be used in configuring the DbContext
+            using (var db = new MSDbContext(options))
+            {
+                Product product = new Product
+                {
+                    Id = 26,
+                    Name = "drum",
+                };
+                db.Add(product);
+                await db.SaveChangesAsync();
+                db.Remove(product);
+                await db.SaveChangesAsync();
+
+            }
+
+            //Assert
+            using (var context = new MSDbContext(options))
+            {
+                Assert.Equal(0, context.Products.Count());
+
+            }
+        }
+
+
+        [Fact]
+        public async Task DeletesStoreFromDb()
+        {
+
+            //Arrange - create an object to configure your inmemory DB.
+            var options = new DbContextOptionsBuilder<MSDbContext>()
+                .UseInMemoryDatabase(databaseName: "DeletesStoreFromDb")
+                .Options;
+
+
+            //Act - send in the configure object to the DbContext constructor to be used in configuring the DbContext
+            using (var db = new MSDbContext(options))
+            {
+                Store store = new Store
+                {
+                    Id = 42,
+                    Name = "Mars",
+                };
+                db.Add(store);
+                await db.SaveChangesAsync();
+                db.Remove(store);
+                await db.SaveChangesAsync();
+
+            }
+
+            //Assert
+            using (var context = new MSDbContext(options))
+            {
+                Assert.Equal(0, context.Stores.Count());
+
+            }
+        }
+
+        [Fact]
+        public async Task DeletesOrderFromDb()
+        {
+
+            //Arrange - create an object to configure your inmemory DB.
+            var options = new DbContextOptionsBuilder<MSDbContext>()
+                .UseInMemoryDatabase(databaseName: "DeletesOrderFromDb")
+                .Options;
+
+
+            //Act - send in the configure object to the DbContext constructor to be used in configuring the DbContext
+            using (var db = new MSDbContext(options))
+            {
+                Order order = new Order
+                {
+                    Id = 43,
+                    StoreId = 4
+                };
+                db.Add(order);
+                await db.SaveChangesAsync();
+                db.Remove(order);
+                await db.SaveChangesAsync();
+
+            }
+
+            //Assert
+            using (var context = new MSDbContext(options))
+            {
+                Assert.Equal(0, context.Orders.Count());
+
+            }
+        }
+
+        [Fact]
+        public void GetsOrderLineItem()
+        {
+            var options = InMemoryDb("GetsOrderLineItems");
+
+            //Act
+            using (var context = new MSDbContext(options))
+            {
+                var orderLineItem = new OrderLineItem
+                {
+                    Id = 45,
+                    OrderId = 5,
+                    Price = 25M,
+                    Quantity = 4
+                };
+                context.Add(orderLineItem);
+                context.SaveChanges();
+
+                // Assert
+                var result = context.OrderLineItems.Where(o => o.Id == orderLineItem.Id).AsNoTracking().FirstOrDefault();
+
+                Assert.Equal(orderLineItem.Quantity, result.Quantity);
+            }
+           
+        }
+
+
+        [Fact]
+        public void CustomerSearchByUserByFirstName()
+        {
+            // Arrange 
+            var options = new DbContextOptionsBuilder<MSDbContext>()
+                .UseInMemoryDatabase(databaseName: "CustomerByName")
+                .Options;
+            Customer cust = new Customer
+            {
+                FirstName = "Test User",
+                LastName = "Test Last"
+
+            };
+          
+            string firstName = "Test";
+         
+            //Act
+            using (var context = new MSDbContext(options))
+            {
+                
+                context.Add(cust);
+                context.SaveChanges();
+
+                var result = context.Customers
+                    .Where(c => c.FirstName.Contains(firstName))
+                    .AsNoTracking().FirstOrDefault();
+
+                //Assert
+                Assert.Equal(cust.FirstName, result.FirstName);
+            }
+          
+
+        }
+
+        [Fact]
+        public void CustomerSearchByUserByLastName()
+        {
+            // Arrange 
+            var options = new DbContextOptionsBuilder<MSDbContext>()
+                .UseInMemoryDatabase(databaseName: "CustomerByName")
+                .Options;
+            Customer cust = new Customer
+            {
+                FirstName = "Test User",
+                LastName = "Test Last"
+
+            };
+
+            string lastName= "Test";
+
+            //Act
+            using (var context = new MSDbContext(options))
+            {
+
+                context.Add(cust);
+                context.SaveChanges();
+
+                var result = context.Customers
+                    .Where(c => c.LastName.Contains(lastName))
+                    .AsNoTracking().FirstOrDefault();
+
+                //Assert
+                Assert.Equal(cust.LastName, result.LastName);
+            }
+
+
+        }
+
+        [Fact]
+        public void ShoppingCartHasItems()
+        {
+            // Arrange 
+            var options = new DbContextOptionsBuilder<MSDbContext>()
+                .UseInMemoryDatabase(databaseName: "CustomerByName")
+                .Options;
+            ShoppingCartItem cartItem = new ShoppingCartItem
+            {
+                ShoppingCartId = "1",
+                customerEmail = "test@test.com",
+                Quantity = 2,
+                StoreId = "5"
+
+            };
+
+
+            //Act
+            using (var context = new MSDbContext(options))
+            {
+
+                context.Add(cartItem);
+                context.SaveChanges();
+
+                var result = context.ShoppingCartItems
+                    .Where(c => c.customerEmail.Contains(cartItem.customerEmail))
+                    .AsNoTracking().FirstOrDefault();
+
+                //Assert
+                Assert.Equal(cartItem.customerEmail, result.customerEmail);
+            }
+
+
         }
 
         private DbContextOptions<MSDbContext> InMemoryDb(string name)

@@ -41,6 +41,7 @@ namespace MusicShop.Domain
         /// </summary>
         [StringLength(128)]
         [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         /// <summary>
         /// Gets of sets the customer Address of customer
