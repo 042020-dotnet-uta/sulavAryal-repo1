@@ -51,7 +51,7 @@ stages:
             #  The build script build the project.
             #  The file path must be entered in as relative to the azure-pipelines.yml file
             #   location in the repo
-          - script: dotnet build 'Proj0/Proj0/Proj0.sln'
+          - script: dotnet build 'Project2/MusicShop.sln'
           #  This task is a DotNetCoreCLI version 2 task
           - task: DotNetCoreCLI@2
             #  The display name sets the displayed name of the task
