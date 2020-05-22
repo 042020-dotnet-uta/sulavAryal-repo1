@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <DebugType>Full</DebugType>
+    <ProjectGuid>{8733ADD7-FFFF-4849-AAE0-4BAE1665A4FF}</ProjectGuid>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <Content Remove="wwwroot\favicon2.ico" />
   </ItemGroup>
