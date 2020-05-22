@@ -36,7 +36,7 @@ stages:
               #  for the project in sonar cloud
               projectKey: '4f8fd6eb4b7919671a3cfbd7bf647e0d2cb7106d'
               #  The project name being used
-              projectName: 'proj0'
+              projectName: 'testDevOpsPipeline'
               #  The sonar.exclusions are those files in our application
               #   that we do not want included in the sonar cloud analysis
               #  We set the branch name so that sonar cloud has the same branch name as azure?
