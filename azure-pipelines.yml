@@ -16,4 +16,16 @@ steps:
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarProj2'
+    organization: 'testkey123456'
+    scannerMode: 'MSBuild'
+    projectKey: '4f8fd6eb4b7919671a3cfbd7bf647e0d2cb7106d'
+    projectName: 'Project 2'
+    extraProperties: |
+      sonar.exclusions=**/obj/**,**/*.dll
+      sonar.branch.name=$(Build.SourceBranchName)
+      sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/*.trx
+      sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/**/*.xml
   displayName: 'Run a multi-line script'
