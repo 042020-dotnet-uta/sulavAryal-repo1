@@ -90,6 +90,7 @@ stages:
             inputs:
               command: 'test'
               arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --logger trx'
+              projects: '**/*Project2/MusicShop.Tests.csproj'
               testRunTitle: 'dotnet test'
           - task: PublishCodeCoverageResults@1
             #  The display name sets the displayed name of the task
