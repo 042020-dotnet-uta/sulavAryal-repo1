@@ -103,7 +103,7 @@ stages:
               #   the test task
               summaryFileLocation: '$(Build.SourcesDirectory)/**/*.xml'
               #  The report directory is the folder location of the reports
-              reportDirectory: '$(Build.SourcesDirectory)/CodeCoverage'   
+              reportDirectory: '$(Build.SourcesDirectory)'   
           #  The SonarCloudAnalyze task runs the sonar cloud tool to analze the project and resulting reports           
           - task: SonarCloudAnalyze@1
           #  SonarCloudPublish publishes the sonar analysis results to sonar cloud
