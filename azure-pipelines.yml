@@ -77,7 +77,7 @@ stages:
               arguments: '--configuration $(BuildConfiguration) 
                 /p:CollectCoverage=true 
                 /p:CoverletOutputFormat=opencover 
-                /p:Coverletoutput=$(Build.SourcesDirector)/TestResults/Coverage 
+                /p:Coverletoutput=$(Build.SourcesDirector)
                 --logger trx'
               #  Project indicates the test project that will be run by the test command
               projects: '**/*Project2/MusicShop.Tests.csproj'
