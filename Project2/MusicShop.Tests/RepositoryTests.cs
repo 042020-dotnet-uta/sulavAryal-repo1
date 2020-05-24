@@ -145,7 +145,7 @@ namespace MusicShop.Tests
                 context.Add(store);
                 store = new Store
                 {
-                    Name = "Washinton"
+                    Name = "Washington"
                 };
                 context.Add(store);
                 await context.SaveChangesAsync();
