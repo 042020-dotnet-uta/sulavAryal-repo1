@@ -36,6 +36,6 @@ stages:
                 sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/**/coverage.opencover.xml
                 sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/*.trx
           
-          - script: dotnet build --configuration $(buildConfiguration)
+          - script: dotnet build 'Project2\MusicShop.sln'
             displayName: 'Build'
                 
