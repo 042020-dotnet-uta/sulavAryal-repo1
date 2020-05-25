@@ -76,6 +76,18 @@ stages:
               codeCoverageTool: 'Cobertura'
               summaryFileLocation: '$(Build.SourcesDirectory)/Project2/MusicShop.Tests/coverage.opencover.xml'
               reportDirectory: '$(Build.SourcesDirectory)/Project2/MusicShop.Tests/CodeCoverage'
+          
+          - task: SonarCloudAnalyze@1
+            displayName: 'Run Code Analysis'
+            continueOnError: false
+
+          - task: SonarCloudPublish@1
+            displayName: 'Publish Quality Gate Result'
+            continueOnError: false
+            inputs:
+              pollingTimeoutSec: '300'
+
+
 
 
 
