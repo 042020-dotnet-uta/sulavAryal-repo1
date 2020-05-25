@@ -23,33 +23,33 @@ stages:
         steps:
           #  This task is the SonarCloudPrepare task.
           #  It is used to configure the SonarCloud service
-          # - task: SonarCloudPrepare@1
-          #   inputs:
-          #     SonarCloud: 'SonarProj2'
-          #     organization: 'testkey123456'
-          #     scannerMode: 'MSBuild'
-          #     projectKey: '8edee758f0a39aafeb0905280fc6e4cdf5fff415'
-          #     projectName: 'testDevOpsPipeline'
-          #     extraProperties: |
-          #       sonar.exclusions=**/obj/**,**/*.dll
-          #       sonar.branch.name=$(Build.SourceBranchName)
-          #       sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/**/coverage.opencover.xml
-          #       sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/*.trx
+          - task: SonarCloudPrepare@1
+            inputs:
+              SonarCloud: 'SonarProj2'
+              organization: 'testkey123456'
+              scannerMode: 'MSBuild'
+              projectKey: '8edee758f0a39aafeb0905280fc6e4cdf5fff415'
+              projectName: 'testDevOpsPipeline'
+              extraProperties: |
+                sonar.exclusions=**/obj/**,**/*.dll
+                sonar.branch.name=$(Build.SourceBranchName)
+                sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/**/coverage.opencover.xml
+                sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/*.trx
           
-          # - script: dotnet build 'Project2\MusicShop.sln'
-          #   displayName: 'Build'
+          - script: dotnet build 'Project2\MusicShop.sln'
+            displayName: 'Build'
 
-          # - task: DotNetCoreCLI@2
-          #   displayName: 'Run Tests $(BuildConfiguration)' 
-          #   inputs:
-          #     command: test
-          #     arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --logger trx'
-          #     projects: 'Project2/**/MusicShop.Tests.csproj'
-          #     nobuild: true
+          - task: DotNetCoreCLI@2
+            displayName: 'Run Tests $(BuildConfiguration)' 
+            inputs:
+              command: test
+              arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --logger trx'
+              projects: 'Project2/**/MusicShop.Tests.csproj'
+              nobuild: true
           
-          # - script: |
-          #     dotnet tool install -g dotnet-reportgenerator-globaltool
-          #   displayName: installs reportgenerator
+          - script: |
+              dotnet tool install -g dotnet-reportgenerator-globaltool
+            displayName: installs reportgenerator
 
           
           - task: DotNetCoreCLI@2
