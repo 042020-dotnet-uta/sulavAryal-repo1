@@ -63,6 +63,7 @@ stages:
               projects: 'Project2/**/MusicShop.Tests.csproj'
           - script: echo "##vso[task.prependpath]$HOME/.dotnet/tools"
             workingDirectory: $(Build.SourcesDirectory)/Project2/MusicShop.Tests
+            displayName: addresses https://github.com/Microsoft/azure-pipelines-tasks/issues/9472
 
 
           # to see where I am at
