@@ -62,10 +62,13 @@ stages:
           #     echo "##vso[task.prependpath]$HOME/.dotnet/tools"
 
           
+          - script: dir
+            workingDirectory: $(Build.SourcesDirectory)
+            displayName: List root folder contents
 
-          - script: 
-              reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.opencover.xml -targetdir:$(Build.SourcesDirectory)/**/CodeCoverage "-reporttypes:HtmlInline_AzurePipelines;Cobertura"
-            displayName: Generate Report...
+          # - script: 
+          #     reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.opencover.xml -targetdir:$(Build.SourcesDirectory)/**/CodeCoverage "-reporttypes:HtmlInline_AzurePipelines;Cobertura"
+          #   displayName: Generate Report...
             
 
             # - script: # script path or inline
