@@ -63,7 +63,14 @@ stages:
 
           
           - task: DotNetCoreCLI@2
-          - script: |
+          - script: 
               dotnet restore 'Project2\MusicShop.sln'
-              reportgenerator -reports:Project2/**/MusicShop.Tests/**/coverage.opencover.xml -targetdir:Project2/**/MusicShop.Tests/CodeCoverage "-reporttypes:HtmlInline_AzurePipelines;Cobertura"
-            displayName: 'Generates report'
+          - script: 
+              reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.opencover.xml -targetdir:$(Build.SourcesDirectory)/**/CodeCoverage "-reporttypes:HtmlInline_AzurePipelines;Cobertura"
+            
+
+            # - script: # script path or inline
+            # workingDirectory: #
+            # displayName: #
+            # failOnStderr: #
+            # env: { string: string } # mapping of environment variables to add
