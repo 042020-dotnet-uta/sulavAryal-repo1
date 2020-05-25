@@ -54,6 +54,9 @@ stages:
           
           - task: DotNetCoreCLI@2
             displayName: 'Sets reportgenerator'
+            inputs: 
+              command: restore
+              projects: 'Project2/**/MusicShop.Tests.csproj'
           - script: |
               echo "##vso[task.prependpath]$HOME/.dotnet/tools"
 
