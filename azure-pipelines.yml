@@ -57,8 +57,9 @@ stages:
             inputs: 
               command: restore
               projects: 'Project2/**/MusicShop.Tests.csproj'
-          - script: |
-              echo "##vso[task.prependpath]$HOME/.dotnet/tools"
+          # - script: |
+          #     workingDirectory:
+          #     echo "##vso[task.prependpath]$HOME/.dotnet/tools"
 
           
           - task: DotNetCoreCLI@2
