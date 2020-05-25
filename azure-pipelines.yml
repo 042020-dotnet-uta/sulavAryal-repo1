@@ -35,4 +35,7 @@ stages:
                 sonar.branch.name=$(Build.SourceBranchName)
                 sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/**/coverage.opencover.xml
                 sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/*.trx
+          
+          - script: dotnet build --configuration $(buildConfiguration)
+            displayName: 'Build'
                 
