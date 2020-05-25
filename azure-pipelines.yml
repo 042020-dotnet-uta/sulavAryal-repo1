@@ -65,5 +65,5 @@ stages:
           - task: DotNetCoreCLI@2
           - script: |
               dotnet restore 'Project2\MusicShop.sln'
-              reportgenerator -reports:MusicShop.Tests/**/coverage.opencover.xml -targetdir:MusicShop.Tests/CodeCoverage "-reporttypes:HtmlInline_AzurePipelines;Cobertura"
+              reportgenerator -reports:Project2/**/MusicShop.Tests/**/coverage.opencover.xml -targetdir:Project2/**/MusicShop.Tests/CodeCoverage "-reporttypes:HtmlInline_AzurePipelines;Cobertura"
             displayName: 'Generates report'
