@@ -69,10 +69,22 @@ stages:
           - script: 
               reportgenerator -reports:$(Build.SourcesDirectory)/Project2/MusicShop.Tests/coverage.opencover.xml -targetdir:$(Build.SourcesDirectory)/Project2/MusicShop.Tests/CodeCoverage "-reporttypes:HtmlInline_AzurePipelines;Cobertura"
             displayName: Generate Report...
-            
 
-            # - script: # script path or inline
-            # workingDirectory: #
-            # displayName: #
-            # failOnStderr: #
-            # env: { string: string } # mapping of environment variables to add
+          - task: PublishCodeCoverageResults@1
+            displayName: Publish code coverage
+            inputs:
+              codeCoverageTool: 'Cobertura'
+              summaryFileLocation: '$(Build.SourcesDirectory)/Project2/MusicShop.Tests/coverage.opencover.xml'
+              reportDirectory: '$(Build.SourcesDirectory)/Project2/MusicShop.Tests/CodeCoverage'
+
+
+
+            
+         
+            
+  #         - task: PublishCodeCoverageResults@1
+  #           displayName: 'Publish Code Coverage'
+  # inputs:
+  #   codeCoverageTool: Cobertura
+  #   summaryFileLocation: '$(Build.SourcesDirectory)/CodeCoverage/Cobertura.xml'
+  #   reportDirectory: '$(Build.SourcesDirectory)/CodeCoverage'
