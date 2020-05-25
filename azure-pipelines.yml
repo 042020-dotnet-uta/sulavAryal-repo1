@@ -38,4 +38,11 @@ stages:
           
           - script: dotnet build 'Project2\MusicShop.sln'
             displayName: 'Build'
-                
+
+          - task: DotNetCoreCLI@2
+            displayName: Run Tests
+            inputs:
+              command: test
+              arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --logger trx'
+              projects: 'Project2\MusicShop.Tests\MusicShop.Tests.csproj'
+              nobuild: true
