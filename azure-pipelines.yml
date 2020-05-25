@@ -40,9 +40,10 @@ stages:
             displayName: 'Build'
 
           - task: DotNetCoreCLI@2
-            displayName: Run Tests
+            displayName: 'Run Tests $(BuildConfiguration)' 
             inputs:
               command: test
               arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --logger trx'
               projects: 'MusicShop.Tests\MusicShop.Tests.csproj'
               nobuild: true
+          -
