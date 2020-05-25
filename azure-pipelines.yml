@@ -5,15 +5,34 @@ trigger: #  pipeline will auto run when any changes to the master branch are mad
 pool:
   vmImage: 'ubuntu-latest'
 
-- task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
-  displayName: 'Prepare analysis on SonarCloud'
-  inputs:
-    SonarCloud: 'SonarCloud-CodeAnalysis-Server'
-    organization: testkey123456
-    projectKey: '8edee758f0a39aafeb0905280fc6e4cdf5fff415'
-    projectName: 'testDevOpsPipeline'
-    extraProperties: |
-      sonar.exclusions=**/obj/**,**/*.dll
-      sonar.branch.name=$(Build.SourceBranchName)
-      sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/**/coverage.opencover.xml
-      sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/*.trx
+pr: 'none'
+
+#  For the operations related to sonar cloud to function properly
+#  they must all be in the same job
+#  The general order that they must follow is
+#   - SonarCloudPrepare
+#   - Build project
+#   - Run test (generating code coverage at the same time)
+#   - SonarCloudAnalyze
+#   - SonarCloudPublish
+
+stages:
+  - stage:
+    jobs:
+      - job: 'build'
+        steps:
+          #  This task is the SonarCloudPrepare task.
+          #  It is used to configure the SonarCloud service
+          - task: SonarCloudPrepare@1
+            inputs:
+              SonarCloud: 'SonarProj2'
+              organization: 'testkey123456'
+              scannerMode: 'MSBuild'
+              projectKey: '8edee758f0a39aafeb0905280fc6e4cdf5fff415'
+              projectName: 'testDevOpsPipeline'
+              extraProperties: |
+                sonar.exclusions=**/obj/**,**/*.dll
+                sonar.branch.name=$(Build.SourceBranchName)
+                sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/**/coverage.opencover.xml
+                sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/*.trx
+                
