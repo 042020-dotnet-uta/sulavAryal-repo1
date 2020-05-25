@@ -1,3 +1,5 @@
+# follows this guide =>  https://www.jesperbrannstrom.com/using-sonarcloud-in-azure-pipelines/
+
 trigger: #  pipeline will auto run when any changes to the master branch are made
 - master
 
