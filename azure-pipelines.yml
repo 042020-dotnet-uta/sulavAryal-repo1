@@ -48,7 +48,7 @@ stages:
               nobuild: true
           
           - script: |
-              dotnet tool install -g dotnet-reportgenerator-globaltool
+              dotnet tool install -g dotnet-reportgenerator-globaltool 'Project2\MusicShop.Tests\MusicShop.Tests.csproj'
             displayName: installs reportgenerator
 
           
