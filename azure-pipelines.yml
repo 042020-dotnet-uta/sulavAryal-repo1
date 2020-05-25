@@ -61,7 +61,7 @@ stages:
             workingDirectory: $(Build.SourcesDirectory)/Project2/MusicShop.Tests
 
 
-          
+          # to see where I am at
           - script: dir
             workingDirectory: $(Build.SourcesDirectory)/Project2/MusicShop.Tests
             displayName: List root folder contents
