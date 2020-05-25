@@ -49,11 +49,17 @@ stages:
           
           - script: |
               dotnet tool install -g dotnet-reportgenerator-globaltool
-              echo "##vso[task.prependpath]$HOME/.dotnet/tools"
-            displayName: Create Code Coverage Report
+            displayName: installs reportgenerator
 
+          
+          - task: DotNetCoreCLI@2
+            displayName: 'Sets reportgenerator'
+          - script: |
+              echo "##vso[task.prependpath]$HOME/.dotnet/tools"
+
+          
           - task: DotNetCoreCLI@2
           - script: |
               dotnet restore 'Project2\MusicShop.sln'
               reportgenerator "-reports:$(Build.SourcesDirectory)/**/coverage.opencover.xml" "-targetdir:$(Build.SourcesDirectory)/CodeCoverage" "-reporttypes:HtmlInline_AzurePipelines;Cobertura"
-            displayName: 'Report generator'
+            displayName: 'Generates report'
