@@ -1,8 +1,9 @@
-trigger:
+trigger: #  pipeline will auto run when any changes to the master branch are made
 - master
 
+# using ubuntu latest vmImage
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
 variables:
   buildConfiguration: 'Release'
