@@ -46,4 +46,3 @@ stages:
               arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --logger trx'
               projects: 'MusicShop.Tests\MusicShop.Tests.csproj'
               nobuild: true
-          -
