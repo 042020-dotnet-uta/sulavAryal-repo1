@@ -62,11 +62,10 @@ stages:
           #     echo "##vso[task.prependpath]$HOME/.dotnet/tools"
 
           
-          - task: DotNetCoreCLI@2
-          - script: 
-              dotnet restore 'Project2\MusicShop.sln'
+
           - script: 
               reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.opencover.xml -targetdir:$(Build.SourcesDirectory)/**/CodeCoverage "-reporttypes:HtmlInline_AzurePipelines;Cobertura"
+            displayName: Generate Report...
             
 
             # - script: # script path or inline
