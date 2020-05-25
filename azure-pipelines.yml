@@ -91,16 +91,3 @@ stages:
             inputs:
               pollingTimeoutSec: '300'
 
-
-
-
-
-            
-         
-            
-  #         - task: PublishCodeCoverageResults@1
-  #           displayName: 'Publish Code Coverage'
-  # inputs:
-  #   codeCoverageTool: Cobertura
-  #   summaryFileLocation: '$(Build.SourcesDirectory)/CodeCoverage/Cobertura.xml'
-  #   reportDirectory: '$(Build.SourcesDirectory)/CodeCoverage'
