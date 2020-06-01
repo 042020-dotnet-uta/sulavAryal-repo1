@@ -10,8 +10,8 @@ pool:
 pr: 'none'
 
 # Set variables once
-variables:
-  BuildConfiguration: Release 
+# variables:
+#   BuildConfiguration: Release 
 
 #  For the operations related to sonar cloud to function properly
 #  they must all be in the same job
@@ -29,6 +29,13 @@ stages:
         steps:
           #  This task is the SonarCloudPrepare task.
           #  It is used to configure the SonarCloud service
+          
+          - task: AzureKeyVault@1
+            inputs:
+                azureSubscription: 'Azure subscription 1(2a49f825-386a-4c83-b808-80ffd8cc49ba)'
+                KeyVaultName: 'ftpCredentials123'
+                SecretsFilter: '*'
+                RunAsPreJob: true
           - task: SonarCloudPrepare@1
             inputs:
               SonarCloud: 'SonarProj2'
