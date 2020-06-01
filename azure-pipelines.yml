@@ -6,7 +6,7 @@ trigger: #  pipeline will auto run when any changes to the master branch are mad
 # using ubuntu latest vmImage
 pool:
   vmImage: 'ubuntu-latest'
-
+#now we can use it like this $(FTP_PASSWORD)
 pr: 'none'
 
 # Set variables once
@@ -29,7 +29,12 @@ stages:
         steps:
           #  This task is the SonarCloudPrepare task.
           #  It is used to configure the SonarCloud service
-          
+          - task: AzureKeyVault@1
+            inputs:
+              azureSubscription: 'Azure subscription 1(2)(2a49f825-386a-4c83-b808-80ffd8cc49ba)'
+              KeyVaultName: 'ftpCredentials123'
+              SecretsFilter: 'EditableOptions'
+              RunAsPreJob: EditableOptions
           - task: SonarCloudPrepare@1
             inputs:
               SonarCloud: 'SonarProj2'
