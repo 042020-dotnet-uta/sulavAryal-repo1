@@ -11,7 +11,7 @@ pr: 'none'
 
 # Set variables once
 variables:
-  BuildConfiguration: Release
+  BuildConfiguration: ${{ secrets.BUILDCONFIGURATION }}
 
 #  For the operations related to sonar cloud to function properly
 #  they must all be in the same job
